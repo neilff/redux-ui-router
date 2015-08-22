@@ -38,6 +38,7 @@ bower_components
 jspm_packages
 .test
 www
+lib/
 
 keys.md
 .env
