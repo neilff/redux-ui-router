@@ -1,0 +1,37 @@
+var path = require('path');
+var webpack = require('webpack');
+
+module.exports = {
+  devtool: 'eval',
+  entry: [
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/dev-server',
+    './index'
+  ],
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/static/'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
+  resolve: {
+    extensions: ['', '.js'],
+    alias: {
+      'react': path.join(__dirname, '..', '..', 'node_modules', 'react')
+    }
+  },
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['babel'],
+      exclude: /node_modules/
+    }, {
+      test: /\.css?$/,
+      loaders: ['style', 'raw'],
+      exclude: /node_modules/
+    }]
+  }
+};

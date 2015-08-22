@@ -1,0 +1,53 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+  "globals": {
+    "angular": true,
+    "moment": true,
+    "R": true,
+    "inject": true,
+    "Q": true,
+    "sinon": true,
+    "getService": true,
+    "expect": true,
+    "xit": true,
+    "dealoc": true,
+    "require": true
+  },
+  "rules": {
+    "camelcase": 2,
+    "curly": 2,
+    "brace-style": [2, "1tbs"],
+    "quotes": [2, "single"],
+    "semi": [2, "always"],
+    "object-curly-spacing": [2, "never"],
+    "array-bracket-spacing": [2, "never"],
+    "computed-property-spacing": [2, "never"],
+    "space-infix-ops": 2,
+    "space-after-keywords": [2, "always"],
+    "dot-notation": 2,
+    "eqeqeq": [2, "smart"],
+    "no-use-before-define": 2,
+    "no-redeclare": 2,
+    "no-unused-vars": [2, {"vars": "all", "args": "after-used"}],
+    "no-floating-decimal": 2,
+    "no-spaced-func": 2,
+    "no-extra-parens": 1,
+    "no-underscore-dangle": 0,
+    "valid-jsdoc": 1,
+    "space-after-keywords": 2,
+    "max-len": [2, 120],
+    "no-use-before-define": [2, "nofunc"],
+    "no-warning-comments": 0,
+    "strict": 0,
+    "eol-last": 0,
+    "semi": 2
+  },
+  "ecmaFeatures": {
+    "modules": true
+  }
+}
