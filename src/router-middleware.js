@@ -1,23 +1,17 @@
 import {
   STATE_GO,
   STATE_RELOAD,
-  STATE_TRANSITION_TO,
-  STATE_CHANGE_START,
-  STATE_CHANGE_SUCCESS,
-  STATE_CHANGE_ERROR,
-  STATE_NOT_FOUND,
-  VIEW_CONTENT_LOADING,
-  VIEW_CONTENT_LOADED,
+  STATE_TRANSITION_TO
 } from './action-types';
 
 export default function routerMiddleware($state) {
-  return store => next => action => {
+  return () => next => action => {
     if (action.type === STATE_GO) {
       let {
         payload: {
           to: to,
           params: params,
-          options: options,
+          options: options
         }
       } = action;
 
@@ -31,7 +25,7 @@ export default function routerMiddleware($state) {
         payload: {
           to: to,
           params: params,
-          options: options,
+          options: options
         }
       } = action;
 
