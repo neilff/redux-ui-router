@@ -27,7 +27,6 @@
     "eslint": "^0.24.0",
     "mocha": "^2.2.5",
     "node-libs-browser": "^0.5.2",
-    "q": "^1.4.1",
     "sinon": "^1.16.1",
     "sinon-as-promised": "^4.0.0"
   }

@@ -1,5 +1,4 @@
 import 'chai';
-import Q from 'q';
 import sinon from 'sinon';
 import 'sinon-as-promised';
 import routerMiddleware from '../router-middleware';
