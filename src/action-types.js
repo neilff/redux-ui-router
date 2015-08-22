@@ -13,5 +13,3 @@ export const STATE_CHANGE_START = '@@reduxUiRouter/$stateChangeStart';
 export const STATE_CHANGE_SUCCESS = '@@reduxUiRouter/$stateChangeSuccess';
 export const STATE_CHANGE_ERROR = '@@reduxUiRouter/$stateChangeError';
 export const STATE_NOT_FOUND = '@@reduxUiRouter/$stateNotFound';
-export const VIEW_CONTENT_LOADING = '@@reduxUiRouter/$viewContentLoading';
-export const VIEW_CONTENT_LOADED = '@@reduxUiRouter/$viewContentLoaded';

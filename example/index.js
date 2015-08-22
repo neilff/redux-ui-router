@@ -20,7 +20,7 @@ const reducers = redux.combineReducers({
 import thunk from 'redux-thunk';
 
 export default angular
-  .module('app', [
+  .module('demoApp', [
     uiRouter,
     ngRedux,
     ngUiRouterMiddleware
@@ -66,11 +66,16 @@ export default angular
               $scope.goto = () => {
                 ngUiRouterActions.stateGo('app.child2');
               }
+
+              $scope.transition = () => {
+                ngUiRouterActions.stateTransitionTo('app.child2');
+              }
             },
             template: `
               <div class="child-view">
                 <h2>Child View 1</h2>
-                <button ng-click="goto()">Child View 2</button>
+                <button ng-click="goto()">$state.go View 2</button>
+                <button ng-click="transition()">$state.transition View 2</button>
               </div>
             `
           }
@@ -99,9 +104,9 @@ export default angular
             template: `
               <div class="child-view">
                 <h2>Child View 2</h2>
-                <button ng-click="goto()">Child View 1</button>
-                <button ng-click="goWithReload()">Go with Reload</button>
-                <button ng-click="goWithParams()">Go with Params</button>
+                <button ng-click="goto()">$state.go View 1</button>
+                <button ng-click="goWithReload()">$state.reload</button>
+                <button ng-click="goWithParams()">$state.go to View 1 with Params</button>
               </div>
             `
           }

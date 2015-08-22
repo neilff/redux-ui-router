@@ -9,6 +9,9 @@
 export default function RouterListener($rootScope, ngUiRouterActions) {
   $rootScope.$on('$stateChangeStart', ngUiRouterActions.onStateChangeStart);
   $rootScope.$on('$stateChangeSuccess', ngUiRouterActions.onStateChangeSuccess);
+
+  $rootScope.$on('$stateChangeError', ngUiRouterActions.onStateChangeError);
+  $rootScope.$on('$stateNotFound', ngUiRouterActions.onStateNotFound);
 }
 
 RouterListener.$inject = ['$rootScope', 'ngUiRouterActions'];

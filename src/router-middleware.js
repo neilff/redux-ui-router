@@ -6,32 +6,23 @@ import {
 
 export default function routerMiddleware($state) {
   return () => next => action => {
-    if (action.type === STATE_GO) {
-      let {
-        payload: {
-          to: to,
-          params: params,
-          options: options
-        }
-      } = action;
+    let { payload } = action;
 
-      return $state.go(to, params, options);
-    } else if (action.type === STATE_RELOAD) {
-      let { payload } = action;
+    switch (action.type) {
+      case STATE_GO:
+        return $state.go(payload.to, payload.params, payload.options)
+          .then(next(action));
 
-      return $state.reload(payload);
-    } else if (action.type === STATE_TRANSITION_TO) {
-      let {
-        payload: {
-          to: to,
-          params: params,
-          options: options
-        }
-      } = action;
+      case STATE_RELOAD:
+        return $state.reload(payload)
+          .then(next(action));
 
-      return $state.transitionTo(to, params, options);
-    } else {
-      next(action);
+      case STATE_TRANSITION_TO:
+        return $state.transitionTo(payload.to, payload.params, payload.options)
+          .then(next(action));
+
+      default:
+        next(action);
     }
   };
 }
