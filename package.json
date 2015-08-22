@@ -15,10 +15,11 @@
   "dependencies": {
     "angular": "^1.4.4",
     "angular-ui-router": "^0.2.15",
-    "babel": "^5.8.21",
-    "immutable": "^3.7.4"
+    "immutable": "^3.7.4",
+    "redux": "1.0.0-alpha"
   },
   "devDependencies": {
+    "babel": "^5.8.21",
     "babel-core": "5.6.15",
     "babel-eslint": "^3.1.20",
     "babel-loader": "^5.3.1",
@@ -26,7 +27,8 @@
     "eslint": "^0.24.0",
     "mocha": "^2.2.5",
     "node-libs-browser": "^0.5.2",
-    "redux": "1.0.0-alpha",
-    "sinon": "^1.15.4"
+    "q": "^1.4.1",
+    "sinon": "^1.16.1",
+    "sinon-as-promised": "^4.0.0"
   }
 }
