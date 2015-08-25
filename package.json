@@ -2,13 +2,13 @@
   "name": "redux-ui-router",
   "version": "0.0.1",
   "description": "Redux middleware for use with Angular UI Router",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "lint": "node node_modules/.bin/eslint src",
-    "clean": "rm -rf src",
+    "clean": "rm -rf lib",
     "test": "npm run lint; NODE_ENV=test node node_modules/.bin/mocha --compilers js:babel/register --recursive --require src/__tests__/index.js src/**/*.test.js",
     "test:live": "npm run lint; NODE_ENV=test node node_modules/.bin/mocha --compilers js:babel/register --recursive --require src/__tests__/index.js -w src/**/*.test.js",
-    "build": "node node_modules/.bin/babel src --out-dir src"
+    "build": "node node_modules/.bin/babel src --out-dir lib"
   },
   "repository": {
     "type": "git",
