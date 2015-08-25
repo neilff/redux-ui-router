@@ -1,7 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-import ngUiRouterMiddleware from '../src';
+import ngUiRouterMiddleware from 'redux-ui-router';
 import ngRedux from 'ng-redux';
 import * as redux from 'redux';
 import createLogger from 'redux-logger';
@@ -11,10 +11,12 @@ const logger = createLogger({
   collapsed: true
 });
 
-import uiRouterState from '../src/router-state-reducer';
+import {router} from 'redux-ui-router';
+
+console.log(router);
 
 const reducers = redux.combineReducers({
-  uiRouterState
+  router
 });
 
 import thunk from 'redux-thunk';
