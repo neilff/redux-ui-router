@@ -1,14 +1,18 @@
 {
   "name": "redux-ui-router",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Redux middleware for use with Angular UI Router",
-  "main": "lib/index.js",
+  "main": "./src/index.js",
   "scripts": {
     "lint": "node node_modules/.bin/eslint src",
-    "clean": "rm -rf lib",
+    "clean": "rm -rf src",
     "test": "npm run lint; NODE_ENV=test node node_modules/.bin/mocha --compilers js:babel/register --recursive --require src/__tests__/index.js src/**/*.test.js",
     "test:live": "npm run lint; NODE_ENV=test node node_modules/.bin/mocha --compilers js:babel/register --recursive --require src/__tests__/index.js -w src/**/*.test.js",
-    "build": "node node_modules/.bin/babel src --out-dir lib"
+    "build": "node node_modules/.bin/babel src --out-dir src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neilff/redux-ui-router"
   },
   "author": "Neil Fenton (neilff)",
   "license": "ISC",
