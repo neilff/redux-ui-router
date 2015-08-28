@@ -1,7 +1,7 @@
 import { STATE_CHANGE_SUCCESS } from './action-types';
-import { Map, fromJS } from 'immutable';
+import { fromJS } from 'immutable';
 
-const INITIAL_STATE = Map({
+const INITIAL_STATE = fromJS({
   currentState: null,
   currentParams: null,
   prevState: null,

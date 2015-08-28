@@ -1,7 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-import ngUiRouterMiddleware from 'redux-ui-router';
+//import ngUiRouterMiddleware from 'redux-ui-router';
 import ngRedux from 'ng-redux';
 import * as redux from 'redux';
 import createLogger from 'redux-logger';
@@ -11,9 +11,9 @@ const logger = createLogger({
   collapsed: true
 });
 
-import {router} from 'redux-ui-router';
+import ngReduxRouter from '../src';
+import {router} from '../src';
 
-console.log(router);
 
 const reducers = redux.combineReducers({
   router
@@ -25,7 +25,7 @@ export default angular
   .module('demoApp', [
     uiRouter,
     ngRedux,
-    ngUiRouterMiddleware
+    ngReduxRouter
   ])
   .config(($urlRouterProvider, $stateProvider) => {
     $urlRouterProvider.otherwise('/app');

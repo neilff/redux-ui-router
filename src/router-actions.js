@@ -21,7 +21,7 @@ export default function routerActions($ngRedux) {
     stateReload,
     stateTransitionTo
   };
-
+  
   return redux.bindActionCreators(actionCreator, $ngRedux.getStore().dispatch);
 }
 
