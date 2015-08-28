@@ -16,3 +16,4 @@ export default angular
   .factory('ngUiRouterMiddleware', routerMiddleware)
   .run(uiRouterListener)
   .name;
+
