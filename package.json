@@ -1,6 +1,6 @@
 {
   "name": "redux-ui-router",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Redux middleware for use with Angular UI Router",
   "main": "./lib/index.js",
   "scripts": {
