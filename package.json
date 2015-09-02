@@ -1,6 +1,6 @@
 {
   "name": "redux-ui-router",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Redux middleware for use with Angular UI Router",
   "main": "./lib/index.js",
   "scripts": {
@@ -17,11 +17,9 @@
   "author": "Neil Fenton (neilff)",
   "license": "ISC",
   "dependencies": {
-    "angular": "1.4.4",
-    "angular-ui-router": "0.2.15",
     "babel": "5.8.21",
     "immutable": "3.7.4",
-    "redux": "^2.0.0"
+    "redux": "2.0.0"
   },
   "devDependencies": {
     "babel-core": "5.6.15",
@@ -30,7 +28,7 @@
     "chai": "3.0.0",
     "eslint": "0.24.0",
     "mocha": "2.2.5",
-    "ng-redux": "^2.0.0",
+    "ng-redux": "2.0.0",
     "node-libs-browser": "0.5.2",
     "sinon": "1.16.1",
     "sinon-as-promised": "4.0.0"
