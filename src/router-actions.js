@@ -22,7 +22,7 @@ export default function routerActions($ngRedux) {
     stateTransitionTo
   };
 
-  return redux.bindActionCreators(actionCreator, $ngRedux.getStore().dispatch);
+  return redux.bindActionCreators(actionCreator, $ngRedux.dispatch);
 }
 
 routerActions.$inject = ['$ngRedux'];

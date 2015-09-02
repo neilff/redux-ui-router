@@ -55,7 +55,7 @@ export default angular
             controller: ($scope, $ngRedux) => {
               $scope.globalState = {};
 
-              $ngRedux.connect(state => state, state => $scope.globalState = state);
+              $ngRedux.connect(state => { return { globalState: state}; })($scope)
             }
           }
         }

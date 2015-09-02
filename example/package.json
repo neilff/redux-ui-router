@@ -15,8 +15,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "ng-redux": "1.0.0-rc",
-    "redux": "^1.0.1",
+    "ng-redux": "^2.0.0",
+    "redux": "^2.0.0",
     "redux-logger": "1.0.4",
     "redux-thunk": "0.1.0"
   }

@@ -1,16 +1,12 @@
 import 'chai';
 import routerActions from '../router-actions';
 
-let $ngReduxMock = {
-  getStore: () => {
-    return {
-      dispatch: () => {}
-    };
-  }
-};
-
 describe('routerActions', () => {
   it('should bind the action creators', () => {
+    let $ngReduxMock = {
+      dispatch: () => {}
+    };
+
     let actions = routerActions($ngReduxMock);
 
     expect(actions.onStateChangeStart).to.be.a('function');
