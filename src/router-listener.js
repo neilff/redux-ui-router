@@ -2,16 +2,18 @@
  * Listens for events emitted from Angular UI Router and fires redux events
  *
  * @param {object} $rootScope Dependency
- * @param {object} ngUiRouterActions Dependency
+ * @param {object} ngUiStateChangeActions Dependency
  * @param {object} accountSelectActions Dependency
  * @return {undefined} undefined
  */
-export default function RouterListener($rootScope, ngUiRouterActions) {
-  $rootScope.$on('$stateChangeStart', ngUiRouterActions.onStateChangeStart);
-  $rootScope.$on('$stateChangeSuccess', ngUiRouterActions.onStateChangeSuccess);
+export default function RouterListener($rootScope, ngUiStateChangeActions) {
 
-  $rootScope.$on('$stateChangeError', ngUiRouterActions.onStateChangeError);
-  $rootScope.$on('$stateNotFound', ngUiRouterActions.onStateNotFound);
+  $rootScope.$on('$stateChangeStart', ngUiStateChangeActions.onStateChangeStart);
+  $rootScope.$on('$stateChangeSuccess', ngUiStateChangeActions.onStateChangeSuccess);
+
+  $rootScope.$on('$stateChangeError', ngUiStateChangeActions.onStateChangeError);
+  $rootScope.$on('$stateNotFound', ngUiStateChangeActions.onStateNotFound);
 }
 
-RouterListener.$inject = ['$rootScope', 'ngUiRouterActions'];
+RouterListener.$inject = ['$rootScope', 'ngUiStateChangeActions'];
+
