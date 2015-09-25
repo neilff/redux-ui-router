@@ -12,8 +12,10 @@ const logger = createLogger({
 });
 
 import ngReduxRouter from '../src';
-import {router} from '../src';
-
+import {
+  router
+}
+from '../src';
 
 const reducers = redux.combineReducers({
   router
@@ -55,7 +57,11 @@ export default angular
             controller: ($scope, $ngRedux) => {
               $scope.globalState = {};
 
-              $ngRedux.connect(state => { return { globalState: state}; })($scope)
+              $ngRedux.connect(state => {
+                return {
+                  globalState: state
+                };
+              })($scope)
             }
           }
         }
@@ -64,20 +70,17 @@ export default angular
         url: '/child1?hello?optional',
         views: {
           child: {
-            controller: ($scope, ngUiRouterActions) => {
-              $scope.goto = () => {
-                ngUiRouterActions.stateGo('app.child2');
-              }
+            controller: ($scope, ngUiRouterActions, $ngRedux) => {
+              let disconnect = $ngRedux.connect((state) => state, ngUiRouterActions)($scope);
 
-              $scope.transition = () => {
-                ngUiRouterActions.stateTransitionTo('app.child2');
-              }
+              $scope.$on('$destroy', disconnect)
+
             },
             template: `
               <div class="child-view">
                 <h2>Child View 1</h2>
-                <button ng-click="goto()">$state.go View 2</button>
-                <button ng-click="transition()">$state.transition View 2</button>
+                <button ng-click="stateGo('app.child2')">stateGo View 2</button>
+                <button ng-click="stateTransitionTo('app.child2')">stateTransitionTo View 2</button>
               </div>
             `
           }
@@ -87,28 +90,18 @@ export default angular
         url: '/child2',
         views: {
           child: {
-            controller: ($scope, ngUiRouterActions) => {
-              $scope.goto = () => {
-                ngUiRouterActions.stateGo('app.child1');
-              }
+            controller: ($scope, ngUiRouterActions, $ngRedux) => {
+              let disconnect = $ngRedux.connect((state) => state, ngUiRouterActions)($scope);
 
-              $scope.goWithReload = () => {
-                ngUiRouterActions.stateReload('app.child1');
-              }
+              $scope.$on('$destroy', disconnect)
 
-              $scope.goWithParams = () => {
-                ngUiRouterActions.stateGo('app.child1', {
-                  hello: 'world',
-                  optional: true
-                });
-              }
             },
             template: `
               <div class="child-view">
                 <h2>Child View 2</h2>
-                <button ng-click="goto()">$state.go View 1</button>
-                <button ng-click="goWithReload()">$state.reload</button>
-                <button ng-click="goWithParams()">$state.go to View 1 with Params</button>
+                <button ng-click="stateGo('app.child1')">$state.go View 1</button>
+                <button ng-click="stateReload('app.child1')">$state.reload</button>
+                <button ng-click="stateGo('app.child1',{hello: 'world', optional: true})">$state.go to View 1 with Params</button>
               </div>
             `
           }

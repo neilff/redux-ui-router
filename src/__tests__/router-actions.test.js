@@ -7,12 +7,8 @@ describe('routerActions', () => {
       dispatch: () => {}
     };
 
-    let actions = routerActions($ngReduxMock);
+    let actions = new routerActions($ngReduxMock).$get($ngReduxMock);
 
-    expect(actions.onStateChangeStart).to.be.a('function');
-    expect(actions.onStateChangeSuccess).to.be.a('function');
-    expect(actions.onStateChangeError).to.be.a('function');
-    expect(actions.onStateNotFound).to.be.a('function');
     expect(actions.stateGo).to.be.a('function');
     expect(actions.stateReload).to.be.a('function');
     expect(actions.stateTransitionTo).to.be.a('function');
