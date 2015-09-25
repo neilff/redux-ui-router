@@ -9,13 +9,12 @@ import * as redux from 'redux';
 export default function stateChangeActions() {
 
   this.$get = function ($ngRedux) {
-    
+
     let actionCreator = {
       onStateChangeStart,
       onStateChangeSuccess,
       onStateChangeError,
       onStateNotFound
-
     };
 
     return redux.bindActionCreators(actionCreator, $ngRedux.dispatch);
