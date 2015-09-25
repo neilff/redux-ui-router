@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "npm install; node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -15,8 +15,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "ng-redux": "^2.0.0",
-    "redux": "^2.0.0",
+    "angular": "^1.4.6",
+    "angular-ui-router": "^0.2.15",
+    "ng-redux": "^3.0.0",
+    "redux": "^3.0.0",
     "redux-logger": "1.0.4",
     "redux-thunk": "0.1.0"
   }
