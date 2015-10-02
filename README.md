@@ -60,7 +60,7 @@ class SomeController {
 
 ## <a name="actions">Actions</a>
 
-ngRedux UI Router includes several actions which mimic functionality that Angular UI Router provides. These actions should be used instead of interacting directly with `$state`.
+ngRedux UI Router includes several actions which mimic functionality that Angular UI Router provides. These actions should be used instead of interacting directly with `$state`. These actions can be imported directly from `redux-ui-router`.
 
 ### Usage:
 
@@ -103,7 +103,9 @@ For additional information, refer to the [ngRedux documentation](https://github.
 
 ## <a name="listener">Listener</a>
 
-ngReudx UI Router provides a listener which taps into Angular UI Router's `$stateChangeStart`, `$stateChangeSuccess`, `$stateChangeError`, and `$stateNotFound` events. The listener is responsible for firing actions whenever one of these events occur. This allows us to track the state of the router whenever it is interacted with.
+ngReudx UI Router provides a listener which taps into Angular UI Router's `$stateChangeStart`, `$locationChangeSuccess`, `$stateChangeError`, and `$stateNotFound` events. The listener is responsible for firing actions whenever one of these events occur. This allows us to track the state of the router whenever it is interacted with.
+
+*Note*: As of v0.3.0, we are now listening to `$locationChangeSuccess` instead of `$stateChangeSuccess`. The reason for this is because when `reloadOnSearch: false` is set on a route, and a user manually manipulates the URL, the `$stateChangeSuccess` event does not occur.
 
 ### Usage:
 
@@ -116,7 +118,6 @@ import ngRedux from 'ng-redux';
 import ngReduxUiRouter from 'redux-ui-router';
 
 // Import Angular Components
-import actions from './actions';
 import components from './components';
 
 // Import Configuration
@@ -126,7 +127,6 @@ export default angular
   .module('myApp', [
     ngRedux,
     ngReduxUiRouter,
-    actions,
     components
   ])
   .config(configNgReduxProvider)
