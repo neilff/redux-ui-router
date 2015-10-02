@@ -14,6 +14,10 @@ import { STATE_GO } from './action-types';
 export default function stateGo(to, params, options) {
   return {
     type: STATE_GO,
-    payload: { to, params, options }
+    payload: {
+      to,
+      params,
+      options
+    }
   };
 }

@@ -1,27 +1,18 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-//import ngUiRouterMiddleware from 'redux-ui-router';
 import ngRedux from 'ng-redux';
-import * as redux from 'redux';
+import {combineReducers} from 'redux';
+import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
-const logger = createLogger({
-  level: 'info',
-  collapsed: true
-});
-
 import ngReduxRouter from '../src';
+
 import {
-  router
+  router,
+  routerActions
 }
 from '../src';
-
-const reducers = redux.combineReducers({
-  router
-});
-
-import thunk from 'redux-thunk';
 
 export default angular
   .module('demoApp', [
@@ -48,6 +39,7 @@ export default angular
                     <ul>
                       <li><a ui-sref="app.child1">Child View 1</a></li>
                       <li><a ui-sref="app.child2">Child View 2</a></li>
+                      <li><a ui-sref="app.child3">Child View 3</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -70,11 +62,10 @@ export default angular
         url: '/child1?hello?optional',
         views: {
           child: {
-            controller: ($scope, ngUiRouterActions, $ngRedux) => {
-              let disconnect = $ngRedux.connect((state) => state, ngUiRouterActions)($scope);
+            controller: ($scope, $ngRedux) => {
+              let disconnect = $ngRedux.connect((state) => state, routerActions)($scope);
 
               $scope.$on('$destroy', disconnect)
-
             },
             template: `
               <div class="child-view">
@@ -90,11 +81,10 @@ export default angular
         url: '/child2',
         views: {
           child: {
-            controller: ($scope, ngUiRouterActions, $ngRedux) => {
-              let disconnect = $ngRedux.connect((state) => state, ngUiRouterActions)($scope);
+            controller: ($scope, $ngRedux) => {
+              let disconnect = $ngRedux.connect((state) => state, routerActions)($scope);
 
               $scope.$on('$destroy', disconnect)
-
             },
             template: `
               <div class="child-view">
@@ -107,8 +97,38 @@ export default angular
           }
         }
       })
+      .state('app.child3', {
+        url: '/child3?id',
+        reloadOnSearch: false,
+        views: {
+          child: {
+            controller: ($scope, $ngRedux) => {
+              let disconnect = $ngRedux.connect((state) => state, routerActions)($scope);
+
+              $scope.$on('$destroy', disconnect)
+            },
+            template: `
+              <div class="child-view">
+                <h2>Child View 3</h2>
+                <button ng-click="stateGo('app.child3', {id: '1'})">$state.go View 3, ID: 1</button>
+                <button ng-click="stateGo('app.child3', {id: '2'})">$state.go View 3, ID: 2</button>
+                <button ng-click="stateGo('app.child3', {id: '3'})">$state.go View 3, ID: 3</button>
+              </div>
+            `
+          }
+        }
+      })
   })
   .config(($ngReduxProvider) => {
+    const logger = createLogger({
+      level: 'info',
+      collapsed: true
+    });
+
+    const reducers = combineReducers({
+      router
+    });
+
     $ngReduxProvider.createStoreWith(reducers, ['ngUiRouterMiddleware', logger, thunk]);
   })
   .name;

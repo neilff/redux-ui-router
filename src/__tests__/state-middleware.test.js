@@ -41,17 +41,24 @@ describe('routerMiddleware', () => {
   });
 
   it('should call $state.go if the STATE_GO action is sent', () => {
-    let middleware = routerMiddleware($state)({})(nextSpy);
+    let store = {
+      dispatch: () => {},
+      getState: () => {}
+    };
 
-    middleware({
+    let middleware = routerMiddleware($state)(store)(() => console.log);
+
+    let result = middleware({
       type: STATE_GO,
       payload: {}
     });
 
-    expect(nextSpy.called).to.equal(true);
-    expect($state.go.called).to.equal(true);
-    expect($state.reload.called).to.equal(false);
-    expect($state.transitionTo.called).to.equal(false);
+    result.then(() => {
+      expect(nextSpy.called).to.equal(true);
+      expect($state.go.called).to.equal(true);
+      expect($state.reload.called).to.equal(false);
+      expect($state.transitionTo.called).to.equal(false);
+    });
   });
 
   it('should call $state.reload if the STATE_GO action is sent', () => {

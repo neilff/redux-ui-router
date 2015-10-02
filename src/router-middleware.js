@@ -1,11 +1,12 @@
 import {
   STATE_GO,
   STATE_RELOAD,
-  STATE_TRANSITION_TO
+  STATE_TRANSITION_TO,
+  STATE_CHANGE_SUCCESS
 } from './action-types';
 
 export default function routerMiddleware($state) {
-  return () => next => action => {
+  return ({ getState }) => next => action => {
     let { payload } = action;
 
     switch (action.type) {
@@ -20,6 +21,17 @@ export default function routerMiddleware($state) {
       case STATE_TRANSITION_TO:
         return $state.transitionTo(payload.to, payload.params, payload.options)
           .then(next(action));
+
+      case STATE_CHANGE_SUCCESS:
+        return next({
+          type: STATE_CHANGE_SUCCESS,
+          payload: {
+            currentParams: $state.params,
+            currentState: $state.current,
+            prevState: getState().router.get('currentState', {}).toJS(),
+            prevParams: getState().router.get('currentParams', {}).toJS()
+          }
+        });
 
       default:
         next(action);

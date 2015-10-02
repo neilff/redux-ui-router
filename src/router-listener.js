@@ -9,7 +9,7 @@
 export default function RouterListener($rootScope, ngUiStateChangeActions) {
 
   $rootScope.$on('$stateChangeStart', ngUiStateChangeActions.onStateChangeStart);
-  $rootScope.$on('$stateChangeSuccess', ngUiStateChangeActions.onStateChangeSuccess);
+  $rootScope.$on('$locationChangeSuccess', ngUiStateChangeActions.onStateChangeSuccess);
 
   $rootScope.$on('$stateChangeError', ngUiStateChangeActions.onStateChangeError);
   $rootScope.$on('$stateNotFound', ngUiStateChangeActions.onStateNotFound);

@@ -9,10 +9,10 @@ describe('routerStateReducer', () => {
     };
 
     let state = routerStateReducer(undefined, action);
-    expect(state.toJS().currentState).to.equal(null);
-    expect(state.toJS().currentParams).to.equal(null);
-    expect(state.toJS().prevState).to.equal(null);
-    expect(state.toJS().prevParams).to.equal(null);
+    expect(state.toJS().currentState).to.deep.equal({});
+    expect(state.toJS().currentParams).to.deep.equal({});
+    expect(state.toJS().prevState).to.deep.equal({});
+    expect(state.toJS().prevParams).to.deep.equal({});
   });
 
   it('should set the provided state if the $stateChangeSuccess type is used', () => {

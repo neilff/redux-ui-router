@@ -2,10 +2,10 @@ import { STATE_CHANGE_SUCCESS } from './action-types';
 import { fromJS } from 'immutable';
 
 const INITIAL_STATE = fromJS({
-  currentState: null,
-  currentParams: null,
-  prevState: null,
-  prevParams: null
+  currentState: {},
+  currentParams: {},
+  prevState: {},
+  prevParams: {}
 });
 
 /**
@@ -18,6 +18,6 @@ const INITIAL_STATE = fromJS({
  */
 export default function routerStateReducer(state = INITIAL_STATE, action) {
   return action.type === STATE_CHANGE_SUCCESS
-    ? state.mergeDeep(fromJS(action.payload))
+    ? state.merge(fromJS(action.payload))
     : state;
 }
