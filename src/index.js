@@ -1,9 +1,11 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import routerState from './router-state-reducer';
+import stateGo from './state-go';
+import stateReload from './state-reload';
+import stateTransitionTo from './state-transition-to';
 
 import routerMiddleware from './router-middleware';
-import actions from './router-actions';
 import uiRouterListener from './router-listener';
 import stateChangeActions from './state-change-actions';
 
@@ -16,5 +18,10 @@ export default angular
   .run(uiRouterListener)
   .name;
 
-export const routerActions = actions;
 export const router = routerState;
+
+export {
+  stateGo,
+  stateReload,
+  stateTransitionTo
+};
