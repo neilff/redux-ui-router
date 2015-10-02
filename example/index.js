@@ -10,9 +10,17 @@ import ngReduxRouter from '../src';
 
 import {
   router,
-  routerActions
+  stateGo,
+  stateReload,
+  stateTransitionTo
 }
 from '../src';
+
+const routerActions = {
+  stateGo,
+  stateReload,
+  stateTransitionTo
+};
 
 export default angular
   .module('demoApp', [
