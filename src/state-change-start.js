@@ -14,7 +14,6 @@ import { STATE_CHANGE_START } from './action-types';
  * @return {Object} Action object
  */
 export default function onStateChangeStart(evt, toState, toParams, fromState, fromParams) {
-
   return {
     type: STATE_CHANGE_START,
     payload: {

@@ -4,7 +4,7 @@ import onStateChangeSuccess from './state-change-success';
 import onStateChangeError from './state-change-error';
 import onStateNotFound from './state-not-found';
 
-import * as redux from 'redux';
+import { bindActionCreators } from 'redux';
 
 export default function stateChangeActions() {
 
@@ -17,7 +17,7 @@ export default function stateChangeActions() {
       onStateNotFound
     };
 
-    return redux.bindActionCreators(actionCreator, $ngRedux.dispatch);
+    return bindActionCreators(actionCreator, $ngRedux.dispatch);
   };
 
   this.$get.$inject = ['$ngRedux'];
