@@ -14,6 +14,10 @@ import { STATE_TRANSITION_TO } from './action-types';
 export default function stateTransitionTo(to, toParams, options) {
   return {
     type: STATE_TRANSITION_TO,
-    payload: { to, toParams, options }
+    payload: {
+      to,
+      toParams,
+      options
+    }
   };
 }
