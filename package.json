@@ -1,8 +1,8 @@
 {
   "name": "redux-ui-router",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Redux middleware for use with Angular UI Router",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "lint": "node node_modules/.bin/eslint src",
     "clean": "rm -rf lib",
