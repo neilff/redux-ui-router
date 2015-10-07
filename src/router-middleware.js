@@ -12,21 +12,7 @@ export default function routerMiddleware($state) {
     switch (action.type) {
       case STATE_GO:
         return $state.go(payload.to, payload.params, payload.options)
-          .then(() => {
-            if ($state.current.reloadOnSearch === false) {
-              next({
-                type: STATE_CHANGE_SUCCESS,
-                payload: {
-                  currentState: $state.current,
-                  currentParams: $state.params,
-                  prevState: getState().router.currentState,
-                  prevParams: getState().router.currentParams
-                }
-              });
-            }
-
-            next(action);
-          });
+          .then(next(action));
 
       case STATE_RELOAD:
         return $state.reload(payload)
@@ -40,10 +26,10 @@ export default function routerMiddleware($state) {
         return next({
           type: STATE_CHANGE_SUCCESS,
           payload: {
-            currentState: payload.toState,
-            currentParams: payload.toParams,
-            prevState: payload.fromState,
-            prevParams: payload.fromParams
+            currentState: $state.current,
+            currentParams: $state.params,
+            prevState: getState().router.currentState,
+            prevParams: getState().router.currentParams
           }
         });
 

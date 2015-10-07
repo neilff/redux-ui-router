@@ -58,6 +58,8 @@ class SomeController {
 }
 ```
 
+**Note:** As of v0.4.0, Immutable.js is no longer used. To access router properties, use `router.currentParams[myParam]` instead of `router.getIn(['currentParams', 'myParam'])`.
+
 ## <a name="actions">Actions</a>
 
 ngRedux UI Router includes several actions which mimic functionality that Angular UI Router provides. These actions should be used instead of interacting directly with `$state`. These actions can be imported directly from `redux-ui-router`.
@@ -105,7 +107,7 @@ For additional information, refer to the [ngRedux documentation](https://github.
 
 ngReudx UI Router provides a listener which taps into Angular UI Router's `$stateChangeStart`, `$locationChangeSuccess`, `$stateChangeError`, and `$stateNotFound` events. The listener is responsible for firing actions whenever one of these events occur. This allows us to track the state of the router whenever it is interacted with.
 
-*Note*: As of v0.3.0, we are now listening to `$locationChangeSuccess` instead of `$stateChangeSuccess`. The reason for this is because when `reloadOnSearch: false` is set on a route, and a user manually manipulates the URL, the `$stateChangeSuccess` event does not occur.
+*Note*: As of v0.3.0, we are now listening to `$locationChangeSuccess` instead of `$stateChangeSuccess`. The reason for this is because when `reloadOnSearch: false` is set on a route, and a user manually manipulates the URL, the `$stateChangeSuccess` event does not occur. We manually sync the router using `$urlRouter.sync()`
 
 ### Usage:
 
