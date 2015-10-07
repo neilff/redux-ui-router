@@ -107,6 +107,9 @@ export default angular
       })
       .state('app.child3', {
         url: '/child3?id',
+        params: {
+          hello: 'world'
+        },
         reloadOnSearch: false,
         views: {
           child: {
