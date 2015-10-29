@@ -7,7 +7,7 @@
  * @param {object} accountSelectActions Dependency
  * @return {undefined} undefined
  */
-export default function RouterListener($rootScope, $urlRouter, ngUiStateChangeActions) {
+export default function RouterListener($rootScope, $urlRouter, $stateParams, ngUiStateChangeActions) {
 
   $rootScope.$on('$stateChangeStart', ngUiStateChangeActions.onStateChangeStart);
 
@@ -17,6 +17,11 @@ export default function RouterListener($rootScope, $urlRouter, ngUiStateChangeAc
     ngUiStateChangeActions.onStateChangeSuccess();
   });
 
+  let unsubcribeStateChangeListener = $rootScope.$on('$stateChangeSuccess', () => {
+    ngUiStateChangeActions.onStateChangeSuccess();
+    unsubcribeStateChangeListener();
+  });
+
   $rootScope.$on('$stateChangeError', ngUiStateChangeActions.onStateChangeError);
   $rootScope.$on('$stateNotFound', ngUiStateChangeActions.onStateNotFound);
 }
@@ -24,6 +29,6 @@ export default function RouterListener($rootScope, $urlRouter, ngUiStateChangeAc
 RouterListener.$inject = [
   '$rootScope',
   '$urlRouter',
+  '$stateParams',
   'ngUiStateChangeActions'
 ];
-
