@@ -3,8 +3,8 @@
  *
  * @param {object} $rootScope Dependency
  * @param {object} $urlRouter Dependency
+ * @param {object} $stateParams Dependency
  * @param {object} ngUiStateChangeActions Dependency
- * @param {object} accountSelectActions Dependency
  * @return {undefined} undefined
  */
 export default function RouterListener($rootScope, $urlRouter, $stateParams, ngUiStateChangeActions) {
