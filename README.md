@@ -1,12 +1,14 @@
-#ng-redux-ui-router
+#redux-ui-router
 
 [![Circle CI](https://circleci.com/gh/neilff/ng-redux-ui-router.svg?style=svg)](https://circleci.com/gh/neilff/ng-redux-ui-router)
 
-ngRedux bindings for Angular UI Router - Keep your router state inside your ngRedux store.
+> ngRedux bindings for Angular UI Router - Keep your router state inside your ngRedux store.
 
 - Maintains router state inside your store
 - Use actions to transition your UI instead of `$state`
 - Use your store state to access route params instead of `$stateParams`
+
+## Getting Started
 
 `npm install redux-ui-router`
 
@@ -106,8 +108,6 @@ For additional information, refer to the [ngRedux documentation](https://github.
 ## <a name="listener">Listener</a>
 
 ngReudx UI Router provides a listener which taps into Angular UI Router's `$stateChangeStart`, `$locationChangeSuccess`, `$stateChangeError`, and `$stateNotFound` events. The listener is responsible for firing actions whenever one of these events occur. This allows us to track the state of the router whenever it is interacted with.
-
-*Note*: As of v0.3.0, we are now listening to `$locationChangeSuccess` instead of `$stateChangeSuccess`. The reason for this is because when `reloadOnSearch: false` is set on a route, and a user manually manipulates the URL, the `$stateChangeSuccess` event does not occur. We manually sync the router using `$urlRouter.sync()`
 
 ### Usage:
 
