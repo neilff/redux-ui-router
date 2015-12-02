@@ -10,7 +10,10 @@
 
 ## Getting Started
 
-`npm install redux-ui-router`
+### Installation
+```bash
+$ npm install redux-ui-router
+````
 
 **Documentation is currently work in progress, see [the example here](https://github.com/neilff/redux-ui-router/tree/master/example).**
 
