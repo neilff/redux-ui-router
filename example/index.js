@@ -48,6 +48,7 @@ export default angular
                       <li><a ui-sref="app.child1">Child View 1</a></li>
                       <li><a ui-sref="app.child2">Child View 2</a></li>
                       <li><a ui-sref="app.child3">Child View 3</a></li>
+                      <li><a ui-sref="app.child4">Child View 4 (prohibited)</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -129,6 +130,20 @@ export default angular
           }
         }
       })
+      .state('app.child4', {
+        url: '/child4',
+        prohibited: true,
+        views: {
+          child: {
+            template: `
+            <div class="child-view">
+              <h2>Child View 4</h2>
+              <div>This state is prohibited. You should've been redirected to the root.</div>
+            </div>
+          `
+          }
+        }
+      })
   })
   .config(($ngReduxProvider) => {
     const logger = createLogger({
@@ -141,5 +156,26 @@ export default angular
     });
 
     $ngReduxProvider.createStoreWith(reducers, ['ngUiRouterMiddleware', logger, thunk]);
+  })
+  .run(($rootScope, $state, $ngRedux, $urlRouter) => {
+
+    // If save something to the store, dispatch will force state change update
+    console.log('will do dispatch');
+    $ngRedux.dispatch({type: 'SOME_ACTION'});
+    console.log('did dispatch');
+
+    $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+      if (to.prohibited) {
+        evt.preventDefault();
+        console.log('prohibited state change cancelled');
+        $state.go('app');
+      }
+    });
+
+    console.log('$stateChangeStart callback is ready');
+    console.log('enable $urlRouter listening');
+
+    $urlRouter.sync();
+    $urlRouter.listen();
   })
   .name;

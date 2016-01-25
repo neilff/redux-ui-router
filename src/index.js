@@ -11,7 +11,7 @@ import stateChangeActions from './state-change-actions';
 
 export default angular
   .module('ng-ui-router-middleware', [
-    uiRouter
+    uiRouter,
   ])
   .provider('ngUiStateChangeActions', stateChangeActions)
   .factory('ngUiRouterMiddleware', routerMiddleware)
@@ -23,5 +23,5 @@ export const router = routerState;
 export {
   stateGo,
   stateReload,
-  stateTransitionTo
+  stateTransitionTo,
 };

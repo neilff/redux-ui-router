@@ -17,7 +17,7 @@ export default function stateTransitionTo(to, toParams, options) {
     payload: {
       to,
       toParams,
-      options
-    }
+      options,
+    },
   };
 }

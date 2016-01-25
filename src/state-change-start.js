@@ -20,7 +20,7 @@ export default function onStateChangeStart(evt, toState, toParams, fromState, fr
       toState,
       toParams,
       fromState,
-      fromParams
-    }
+      fromParams,
+    },
   };
 }

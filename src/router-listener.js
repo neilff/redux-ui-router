@@ -8,16 +8,13 @@
  * @return {undefined} undefined
  */
 export default function RouterListener($rootScope, $urlRouter, $stateParams, ngUiStateChangeActions) {
-
   $rootScope.$on('$stateChangeStart', ngUiStateChangeActions.onStateChangeStart);
 
-  $rootScope.$on('$locationChangeSuccess', (evt) => {
-    evt.preventDefault();
-    $urlRouter.sync();
+  $rootScope.$on('$locationChangeSuccess', () => {
     ngUiStateChangeActions.onStateChangeSuccess();
   });
 
-  let unsubcribeStateChangeListener = $rootScope.$on('$stateChangeSuccess', () => {
+  const unsubcribeStateChangeListener = $rootScope.$on('$stateChangeSuccess', () => {
     ngUiStateChangeActions.onStateChangeSuccess();
     unsubcribeStateChangeListener();
   });
@@ -30,5 +27,5 @@ RouterListener.$inject = [
   '$rootScope',
   '$urlRouter',
   '$stateParams',
-  'ngUiStateChangeActions'
+  'ngUiStateChangeActions',
 ];
