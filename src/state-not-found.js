@@ -19,7 +19,7 @@ export default function onStateNotFound(evt, unfoundState, fromState, fromParams
       evt,
       unfoundState,
       fromState,
-      fromParams
-    }
+      fromParams,
+    },
   };
 }

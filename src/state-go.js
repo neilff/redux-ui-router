@@ -17,7 +17,7 @@ export default function stateGo(to, params, options) {
     payload: {
       to,
       params,
-      options
-    }
+      options,
+    },
   };
 }

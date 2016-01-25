@@ -22,7 +22,7 @@ export default function onStateChangeError(evt, toState, toParams, fromState, fr
       toParams,
       fromState,
       fromParams,
-      err
-    }
+      err,
+    },
   };
 }

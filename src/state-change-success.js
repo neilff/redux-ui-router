@@ -10,6 +10,6 @@ import { STATE_CHANGE_SUCCESS } from './action-types';
  */
 export default function onStateChangeSuccess() {
   return {
-    type: STATE_CHANGE_SUCCESS
+    type: STATE_CHANGE_SUCCESS,
   };
 }

@@ -7,7 +7,7 @@ import {
 
 export default function routerMiddleware($state) {
   return ({ getState }) => next => action => {
-    let { payload } = action;
+    const { payload } = action;
 
     switch (action.type) {
       case STATE_GO:
@@ -29,8 +29,8 @@ export default function routerMiddleware($state) {
             currentState: $state.current,
             currentParams: $state.params,
             prevState: getState().router.currentState,
-            prevParams: getState().router.currentParams
-          }
+            prevParams: getState().router.currentParams,
+          },
         });
 
       default:

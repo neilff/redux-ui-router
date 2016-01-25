@@ -12,6 +12,6 @@ import { STATE_RELOAD } from './action-types';
 export default function stateReload(state) {
   return {
     type: STATE_RELOAD,
-    payload: state
+    payload: state,
   };
 }
