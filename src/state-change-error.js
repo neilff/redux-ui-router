@@ -18,6 +18,7 @@ export default function onStateChangeError(evt, toState, toParams, fromState, fr
   return {
     type: STATE_CHANGE_ERROR,
     payload: {
+      evt,
       toState,
       toParams,
       fromState,

@@ -10,6 +10,7 @@ describe('stateChangeError', () => {
     expect(action.payload.fromState).to.equal('fromState');
     expect(action.payload.fromParams).to.equal('fromParams');
     expect(action.payload.err).to.equal('err');
+    expect(action.payload.evt).to.equal('evt');
     expect(action.type).to.equal('@@reduxUiRouter/$stateChangeError');
   });
 });
