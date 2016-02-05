@@ -17,6 +17,7 @@ export default function onStateChangeStart(evt, toState, toParams, fromState, fr
   return {
     type: STATE_CHANGE_START,
     payload: {
+      evt,
       toState,
       toParams,
       fromState,
