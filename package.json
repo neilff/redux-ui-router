@@ -34,7 +34,7 @@
     "sinon-as-promised": "4.0.0"
   },
   "peerDependencies": {
-    "angular": "1.4.x",
+    "angular": "^1.4.x < 2.0.0",
     "angular-ui-router": "^0.2.15"
   }
 }
