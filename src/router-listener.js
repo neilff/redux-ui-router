@@ -10,11 +10,11 @@
 export default function RouterListener($rootScope, $urlRouter, $stateParams, ngUiStateChangeActions) {
   $rootScope.$on('$stateChangeStart', ngUiStateChangeActions.onStateChangeStart);
 
-  $rootScope.$on('$locationChangeSuccess', () => {
+  $rootScope.$on('$stateChangeSuccess', () => {
     ngUiStateChangeActions.onStateChangeSuccess();
   });
 
-  const unsubcribeStateChangeListener = $rootScope.$on('$stateChangeSuccess', () => {
+  const unsubcribeStateChangeListener = $rootScope.$on('$locationChangeSuccess', () => {
     ngUiStateChangeActions.onStateChangeSuccess();
     unsubcribeStateChangeListener();
   });
