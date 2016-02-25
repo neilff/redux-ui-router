@@ -1,6 +1,6 @@
 {
   "name": "redux-ui-router",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Redux middleware for use with Angular UI Router",
   "main": "./lib/index.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "sinon-as-promised": "4.0.0"
   },
   "peerDependencies": {
-    "angular": "^1.4.x",
+    "angular": "^1.4.x < 2.0.0",
     "angular-ui-router": "^0.2.15"
   }
 }
