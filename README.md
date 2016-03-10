@@ -10,6 +10,15 @@
 
 ## Getting Started
 
+### To Run Example
+
+NOTE: Make sure you are using node v4.2.1, and NPM v2.14.7, I suggest using NVM node version manangment https://github.com/creationix/nvm
+
+1. run "npm install" in the example directory
+2. run "npm install" in the root directory
+3. run "npm start" in example directory
+
+
 ### Installation
 ```bash
 $ npm install redux-ui-router

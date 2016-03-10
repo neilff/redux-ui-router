@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "babel": "5.8.21",
+    "babel-loader": "5.1.4",
     "babel-core": "5.6.15",
     "babel-eslint": "5.0.0",
     "chai": "3.0.0",
@@ -29,10 +30,17 @@
     "ng-redux": "3.0.0",
     "node-libs-browser": "0.5.2",
     "sinon": "1.16.1",
-    "sinon-as-promised": "4.0.0"
+    "sinon-as-promised": "4.0.0",
+    "angular": "^1.4.x < 2.0.0",
+    "angular-ui-router": "^0.2.15"
   },
   "peerDependencies": {
     "angular": "^1.4.x < 2.0.0",
     "angular-ui-router": "^0.2.15"
+  },
+  "engines" : {
+    "node" : "4.2.1",
+    "npm" : "2.14.7"
   }
+
 }
