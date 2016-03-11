@@ -15,12 +15,6 @@
 $ npm install redux-ui-router
 ````
 
-### To Run Example
-
-1. run "npm install" in the example directory
-2. run "npm install" in the root directory
-3. run "npm start" in example directory
-
 ## Table of Contents
 
 - [Reducer](#reducer)
@@ -151,5 +145,6 @@ To run the example:
 git clone https://github.com/neilff/redux-ui-router/
 npm install
 cd example
+npm install
 npm run start
 ```
