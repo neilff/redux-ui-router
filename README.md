@@ -12,7 +12,7 @@
 
 ### To Run Example
 
-NOTE: Make sure you are using node v4.2.1, and NPM v2.14.7, I suggest using NVM node version manangment https://github.com/creationix/nvm
+NOTE: Make sure you are using node v5.8.0, and NPM v3.7.3, I suggest using NVM node version manangment https://github.com/creationix/nvm
 
 1. run "npm install" in the example directory
 2. run "npm install" in the root directory
