@@ -28,6 +28,7 @@ export default function routerMiddleware($state) {
         payload: {
           currentState: action.payload.toState,
           currentParams: action.payload.toParams,
+          href: $state.href,
           prevState: action.payload.fromState,
           prevParams: action.payload.fromParams,
         },
