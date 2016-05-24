@@ -32,11 +32,11 @@
     "sinon": "1.16.1",
     "sinon-as-promised": "4.0.0",
     "angular": "^1.4.x < 2.0.0",
-    "angular-ui-router": "^0.2.15"
+    "angular-ui-router": "^0.3.0"
   },
   "peerDependencies": {
     "angular": "^1.4.x < 2.0.0",
-    "angular-ui-router": "^0.2.15"
+    "angular-ui-router": "^0.3.0"
   },
   "engines" : {
     "node" : "4.2.1",
