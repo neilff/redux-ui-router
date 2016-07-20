@@ -81,6 +81,7 @@ export default angular
                 <h2>Child View 1</h2>
                 <button ng-click="stateGo('app.child2')">stateGo View 2</button>
                 <button ng-click="stateTransitionTo('app.child2')">stateTransitionTo View 2</button>
+                <button ng-click="stateTransitionTo('app.child3', {id: '4'})">stateTransitionTo View 3, ID: 4</button>
               </div>
             `
           }
@@ -122,6 +123,7 @@ export default angular
             template: `
               <div class="child-view">
                 <h2>Child View 3</h2>
+                <h3>ID: {{router.currentParams.id}}</h3>
                 <button ng-click="stateGo('app.child3', {id: '1'})">$state.go View 3, ID: 1</button>
                 <button ng-click="stateGo('app.child3', {id: '2'})">$state.go View 3, ID: 2</button>
                 <button ng-click="stateGo('app.child3', {id: '3'})">$state.go View 3, ID: 3</button>
