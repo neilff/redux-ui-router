@@ -24,17 +24,18 @@ describe('routerMiddleware', () => {
     $state.reload = sinon.stub().resolves('foo');
     $state.transitionTo = sinon.stub().resolves('foo');
 
-    nextSpy = sinon.stub();
+    nextSpy = sinon.stub().returns('foo');
   });
 
   it('should call the next action if the router middleware doesn\'t care about it', () => {
     let middleware = routerMiddleware($state)({})(nextSpy);
 
-    middleware({
+    let returnValue = middleware({
       payload: {}
     });
 
     expect(nextSpy.called).to.equal(true);
+    expect(returnValue).to.equal('foo');
     expect($state.go.called).to.equal(false);
     expect($state.reload.called).to.equal(false);
     expect($state.transitionTo.called).to.equal(false);
