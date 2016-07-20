@@ -1,7 +1,7 @@
 {
-  "name": "hally9k-redux-ui-router",
-  "version": "0.0.3",
-  "description": "Just a patched fork of Redux middleware for use with Angular UI Router",
+  "name": "redux-ui-router",
+  "version": "0.5.2",
+  "description": "Redux middleware for use with Angular UI Router",
   "main": "./lib/index.js",
   "scripts": {
     "lint": "node node_modules/.bin/eslint src",
