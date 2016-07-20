@@ -7,16 +7,16 @@ import { STATE_TRANSITION_TO } from './action-types';
  * http://angular-ui.github.io/ui-router/site/#/api/ui.router.state.$state
  *
  * @param  {String} to - State name
- * @param  {Object} params - (optional) Parameters to send with state
+ * @param  {Object} toParams - (optional) Parameters to send with state
  * @param  {Object} options - (optional) Options object
  * @return {Object} Action object
  */
-export default function stateTransitionTo(to, params, options) {
+export default function stateTransitionTo(to, toParams, options) {
   return {
     type: STATE_TRANSITION_TO,
     payload: {
       to,
-      params,
+      toParams,
       options,
     },
   };
