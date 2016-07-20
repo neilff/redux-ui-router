@@ -34,7 +34,7 @@ export default function routerMiddleware($state) {
         });
 
       default:
-        next(action);
+        return next(action);
     }
   };
 }
