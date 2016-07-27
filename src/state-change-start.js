@@ -11,9 +11,10 @@ import { STATE_CHANGE_START } from './action-types';
  * @param {Object} toParams To params object
  * @param {Object} fromState From state definition
  * @param {Object} fromParams From params object
+ * @param {Object} options Options object
  * @return {Object} Action object
  */
-export default function onStateChangeStart(evt, toState, toParams, fromState, fromParams) {
+export default function onStateChangeStart(evt, toState, toParams, fromState, fromParams, options) {
   return {
     type: STATE_CHANGE_START,
     payload: {
@@ -22,6 +23,7 @@ export default function onStateChangeStart(evt, toState, toParams, fromState, fr
       toParams,
       fromState,
       fromParams,
+      options,
     },
   };
 }
