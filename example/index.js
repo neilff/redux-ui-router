@@ -5,6 +5,7 @@ import ngRedux from 'ng-redux';
 import {combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
+import { default as DevTools, runDevTools} from './devTools';
 
 import ngReduxRouter from '../src';
 
@@ -157,27 +158,28 @@ export default angular
       router
     });
 
-    $ngReduxProvider.createStoreWith(reducers, ['ngUiRouterMiddleware', logger, thunk]);
+    const middlewares = ['ngUiRouterMiddleware', thunk, logger];
+    const enhancers = [DevTools.instrument()];
+
+    $ngReduxProvider.createStoreWith(reducers, middlewares, enhancers);
   })
-  .run(($rootScope, $state, $ngRedux, $urlRouter) => {
+  .run(runDevTools)
+  .run(($transitions, $state, $ngRedux) => {
 
     // If save something to the store, dispatch will force state change update
     console.log('will do dispatch');
     $ngRedux.dispatch({type: 'SOME_ACTION'});
     console.log('did dispatch');
 
-    $rootScope.$on('$stateChangeStart', function(evt, to, params) {
-      if (to.prohibited) {
-        evt.preventDefault();
+    let matchCriteria = { to: (state) => state.prohibited };
+
+    $transitions.onBefore(matchCriteria, ($transition$) => {
+      if ($transition$.to().prohibited) {
         console.log('prohibited state change cancelled');
-        $state.go('app');
+        return $state.target('app', {location: 'replace'});
       }
     });
 
-    console.log('$stateChangeStart callback is ready');
-    console.log('enable $urlRouter listening');
-
-    $urlRouter.sync();
-    $urlRouter.listen();
+    console.log('$transitions.onBefore callback is ready');
   })
   .name;

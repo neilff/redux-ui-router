@@ -6,7 +6,9 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/dev-server',
-    './index'
+    './index',
+    //Remove the following line to remove devTools
+    './devTools.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -17,17 +19,14 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-  resolve: {
-    extensions: ['', '.js'],
-    alias: {
-      'react': path.join(__dirname, '..', '..', 'node_modules', 'react')
-    }
-  },
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['babel'],
-      exclude: /node_modules/
+      loader: 'babel',
+      exclude: /node_modules/,
+      query: {
+        presets: ['es2015','react']
+      }
     }, {
       test: /\.css?$/,
       loaders: ['style', 'raw'],

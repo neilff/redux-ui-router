@@ -19,6 +19,5 @@ export default function routerStateReducer(state = INITIAL_STATE, action) {
   if (action.type !== STATE_CHANGE_SUCCESS) {
     return state;
   }
-  delete action.payload.evt;
   return action.payload;
 }

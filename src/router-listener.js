@@ -1,31 +1,39 @@
 /**
  * Listens for events emitted from Angular UI Router and fires redux events
  *
- * @param {object} $rootScope Dependency
+ * @param {object} $transitions Dependency
  * @param {object} $urlRouter Dependency
- * @param {object} $stateParams Dependency
  * @param {object} ngUiStateChangeActions Dependency
  * @return {undefined} undefined
  */
-export default function RouterListener($rootScope, $urlRouter, $stateParams, ngUiStateChangeActions) {
-  $rootScope.$on('$stateChangeStart', ngUiStateChangeActions.onStateChangeStart);
+export default function RouterListener($transitions, $urlRouter, ngUiStateChangeActions) {
+  const onError = ($transition$) => {
+    return ngUiStateChangeActions.onStateChangeError(
+      $transition$.to(),
+      $transition$.to().params,
+      $transition$.from(),
+      $transition$.from().params,
+      $transition$.error()
+    );
+  };
 
-  $rootScope.$on('$stateChangeSuccess', () => {
-    ngUiStateChangeActions.onStateChangeSuccess();
-  });
+  const onStart = ($transition$) => {
+    return ngUiStateChangeActions.onStateChangeStart(
+      $transition$.to(),
+      $transition$.to().params,
+      $transition$.from(),
+      $transition$.from().params
+    );
+  };
 
-  const unsubcribeStateChangeListener = $rootScope.$on('$locationChangeSuccess', () => {
-    ngUiStateChangeActions.onStateChangeSuccess();
-    unsubcribeStateChangeListener();
-  });
 
-  $rootScope.$on('$stateChangeError', ngUiStateChangeActions.onStateChangeError);
-  $rootScope.$on('$stateNotFound', ngUiStateChangeActions.onStateNotFound);
+  $transitions.onStart({}, onStart);
+  $transitions.onSuccess({}, () => ngUiStateChangeActions.onStateChangeSuccess());
+  $transitions.onError({}, onError);
 }
 
 RouterListener.$inject = [
-  '$rootScope',
+  '$transitions',
   '$urlRouter',
-  '$stateParams',
   'ngUiStateChangeActions',
 ];

@@ -12,7 +12,6 @@ describe('routerActions', () => {
     expect(actions.onStateChangeStart).to.be.a('function');
     expect(actions.onStateChangeSuccess).to.be.a('function');
     expect(actions.onStateChangeError).to.be.a('function');
-    expect(actions.onStateNotFound).to.be.a('function');
 
   });
 });

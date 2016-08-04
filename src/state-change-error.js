@@ -1,12 +1,11 @@
 import { STATE_CHANGE_ERROR } from './action-types';
 
 /**
- * This action is triggered when a $stateChangeError event is broadcast.
- * Accepts a payload which matches the UI Router $stateChangeError event.
+ * This action is triggered when a $transitions.onError event is occours.
+ * Accepts a payload which matches the UI Router $transition$.
  *
- * http://angular-ui.github.io/ui-router/site/#/api/ui.router.state.$state
+ * http://angular-ui.github.io/ui-router/1.0.0-alpha.3/classes/transition.transition-1.html#onerror
  *
- * @param {Object} evt event details
  * @param {Object} toState To state definition
  * @param {Object} toParams To params object
  * @param {Object} fromState From state definition
@@ -14,11 +13,10 @@ import { STATE_CHANGE_ERROR } from './action-types';
  * @param {Object} err Error resolve object
  * @return {Object} Action object
  */
-export default function onStateChangeError(evt, toState, toParams, fromState, fromParams, err) {
+export default function onStateChangeError(toState, toParams, fromState, fromParams, err) {
   return {
     type: STATE_CHANGE_ERROR,
     payload: {
-      evt,
       toState,
       toParams,
       fromState,
