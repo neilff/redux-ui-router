@@ -7,29 +7,11 @@
  * @return {undefined} undefined
  */
 export default function RouterListener($transitions, $urlRouter, ngUiStateChangeActions) {
-  const onError = ($transition$) => {
-    return ngUiStateChangeActions.onStateChangeError(
-      $transition$.to(),
-      $transition$.to().params,
-      $transition$.from(),
-      $transition$.from().params,
-      $transition$.error()
-    );
-  };
+  const prevNext = (t) => [t.to(), t.to().params, t.from(), t.from().params];
 
-  const onStart = ($transition$) => {
-    return ngUiStateChangeActions.onStateChangeStart(
-      $transition$.to(),
-      $transition$.to().params,
-      $transition$.from(),
-      $transition$.from().params
-    );
-  };
-
-
-  $transitions.onStart({}, onStart);
+  $transitions.onStart({}, ($transition$) => ngUiStateChangeActions.onStateChangeStart(...prevNext($transition$)));
+  $transitions.onError({}, ($transition$) => ngUiStateChangeActions.onStateChangeError(...prevNext($transition$), $transition$.error()));
   $transitions.onSuccess({}, () => ngUiStateChangeActions.onStateChangeSuccess());
-  $transitions.onError({}, onError);
 }
 
 RouterListener.$inject = [
