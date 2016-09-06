@@ -27,7 +27,7 @@ export default function routerMiddleware($state) {
         type: STATE_CHANGE_SUCCESS,
         payload: {
           currentState: $state.$current.name,
-          currentParams: $state.$current.params,
+          currentParams: $state.params,
           prevState: getState().router.currentState,
           prevParams: getState().router.currentParams,
         },
