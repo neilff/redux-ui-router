@@ -1,4 +1,4 @@
-import chai from 'chai';
+import 'chai';
 import routerStateReducer from '../router-state-reducer';
 
 describe('routerStateReducer', () => {
@@ -17,9 +17,8 @@ describe('routerStateReducer', () => {
 
   it('should set the provided state if the $stateChangeSuccess type is used', () => {
     let action = {
-      type: '@@reduxUiRouter/$stateChangeSuccess',
+      type: '@@reduxUiRouter/onSuccess',
       payload: {
-        evt: 'evt',
         currentState: 'currentState',
         currentParams: 'currentParams',
         prevState: 'prevState',
@@ -28,7 +27,6 @@ describe('routerStateReducer', () => {
     };
 
     let state = routerStateReducer(undefined, action);
-    chai.should().not.exist(state.evt);
     expect(state.currentState).to.equal('currentState');
     expect(state.currentParams).to.equal('currentParams');
     expect(state.prevState).to.equal('prevState');
