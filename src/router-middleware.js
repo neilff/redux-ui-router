@@ -6,7 +6,7 @@ import {
 } from './action-types';
 
 export default function routerMiddleware($state) {
-  return ({ getState }) => next => action => {
+  return () => next => action => {
     const { payload } = action;
 
     switch (action.type) {
@@ -26,10 +26,10 @@ export default function routerMiddleware($state) {
       return next({
         type: STATE_CHANGE_SUCCESS,
         payload: {
-          currentState: $state.$current.name,
-          currentParams: $state.params,
-          prevState: getState().router.currentState,
-          prevParams: getState().router.currentParams,
+          currentState: action.payload.toState,
+          currentParams: action.payload.toParams,
+          prevState: action.payload.fromState,
+          prevParams: action.payload.fromParams,
         },
       });
 
