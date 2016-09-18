@@ -19,13 +19,15 @@ export default function RouterListener($transitions, ngUiStateChangeActions) {
 }
 
 function getStateObject(state) {
-  if(!state){ return {}; }
-  let { name, params, url } = state;
+  if (!state) {
+    return {};
+  }
+  const { name, params, url } = state;
   return {
     name,
     params,
-    url
-  }
+    url,
+  };
 }
 
 RouterListener.$inject = [
