@@ -44,7 +44,7 @@ describe('routerListener', () => {
     describe('onStart', () => {
       it('must call onStateChangeStart with the transition parameters', () => {
         $transitions.onStart.yield($transition$);
-        expect(ngUiStateChangeActions.onStateChangeStart.calledWith('to', 'toParams', 'from', 'fromParams')).to.equal(true);
+        expect(ngUiStateChangeActions.onStateChangeStart.calledWith('to', 'toParams', 'from', 'fromParams', 'href')).to.equal(true);
       });
     });
 
@@ -52,7 +52,7 @@ describe('routerListener', () => {
       it('must call onStateChangeError with the transition parameters and the transition Error', () => {
         $transition$.error = sinon.stub().returns('transitionError');
         $transitions.onError.yield($transition$);
-        expect(ngUiStateChangeActions.onStateChangeError.calledWith('to', 'toParams', 'from', 'fromParams', 'transitionError')).to.equal(true);
+        expect(ngUiStateChangeActions.onStateChangeError.calledWith('to', 'toParams', 'from', 'fromParams', 'href', 'transitionError')).to.equal(true);
       });
     });
 
