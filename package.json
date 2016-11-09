@@ -43,7 +43,6 @@
     "angular-ui-router": "^1.0.0-beta.1"
   },
   "engines": {
-    "node": "6.3.0",
-    "npm": "3.10.3"
+    "node": ">=6.0.0"
   }
 }
