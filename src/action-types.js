@@ -11,4 +11,5 @@ export const STATE_TRANSITION_TO = '@@reduxUiRouter/transitionTo';
 // UI Router Events
 export const STATE_CHANGE_START = '@@reduxUiRouter/onStart';
 export const STATE_CHANGE_SUCCESS = '@@reduxUiRouter/onSuccess';
+export const STATE_CHANGE_FINISH = '@@reduxUiRouter/onFinish';
 export const STATE_CHANGE_ERROR = '@@reduxUiRouter/onError';

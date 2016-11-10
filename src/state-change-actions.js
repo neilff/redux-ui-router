@@ -1,6 +1,7 @@
 // Event Actions
 import onStateChangeStart from './state-change-start';
 import onStateChangeSuccess from './state-change-success';
+import onStateChangeFinish from './state-change-finish';
 import onStateChangeError from './state-change-error';
 
 import { bindActionCreators } from 'redux';
@@ -10,6 +11,7 @@ export default function stateChangeActions() {
     const actionCreator = {
       onStateChangeStart,
       onStateChangeSuccess,
+      onStateChangeFinish,
       onStateChangeError,
     };
 
