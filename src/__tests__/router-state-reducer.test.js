@@ -15,9 +15,9 @@ describe('routerStateReducer', () => {
     expect(state.prevParams).to.deep.equal({});
   });
 
-  it('should set the provided state if the $stateChangeSuccess type is used', () => {
+  it('should set the provided state if the $stateChangeFinish type is used', () => {
     let action = {
-      type: '@@reduxUiRouter/onSuccess',
+      type: '@@reduxUiRouter/onFinish',
       payload: {
         currentState: 'currentState',
         currentParams: 'currentParams',
