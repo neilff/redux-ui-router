@@ -47,7 +47,7 @@ describe('routerMiddleware', () => {
       getState: () => {}
     };
 
-    let middleware = routerMiddleware($state)(store)(() => console.log);
+    let middleware = routerMiddleware($state)(store)(nextSpy);
 
     let result = middleware({
       type: STATE_GO,

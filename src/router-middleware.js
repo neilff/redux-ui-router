@@ -20,7 +20,7 @@ export default function routerMiddleware($state) {
 
     case STATE_TRANSITION_TO:
       return $state.transitionTo(payload.to, payload.params, payload.options)
-      .then(next(action));
+          .then(next(action));
 
     case STATE_CHANGE_FINISH:
       return next({
