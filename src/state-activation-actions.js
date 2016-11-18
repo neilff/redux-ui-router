@@ -5,7 +5,7 @@ import stateTransitionTo from './state-transition-to';
 
 import { bindActionCreators } from 'redux';
 
-export default function stateChangeActions($ngRedux) {
+export default function stateActivationActions($ngRedux) {
   const actionCreator = {
     stateGo,
     stateReload,
@@ -15,4 +15,4 @@ export default function stateChangeActions($ngRedux) {
   return bindActionCreators(actionCreator, $ngRedux.dispatch);
 }
 
-stateChangeActions.$inject = ['$ngRedux'];
+stateActivationActions.$inject = ['$ngRedux'];
