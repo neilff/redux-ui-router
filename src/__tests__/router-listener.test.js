@@ -8,11 +8,13 @@ describe('routerListener', () => {
   let $transitions = {
     onStart: sinon.stub(),
     onError: sinon.stub(),
+    onFinish: sinon.stub(),
     onSuccess: sinon.stub()
   };
   let ngUiStateChangeActions = {
     onStateChangeStart: sinon.stub(),
     onStateChangeError: sinon.stub(),
+    onStateChangeFinish: sinon.stub(),
     onStateChangeSuccess: sinon.stub()
   };
 
@@ -24,6 +26,7 @@ describe('routerListener', () => {
     it('must subscribe listeners', () => {
       expect($transitions.onStart.calledWith({}, sinon.match.func)).to.equal(true);
       expect($transitions.onError.calledWith({}, sinon.match.func)).to.equal(true);
+      expect($transitions.onFinish.calledWith({}, sinon.match.func)).to.equal(true);
       expect($transitions.onSuccess.calledWith({}, sinon.match.func)).to.equal(true);
     });
   });
@@ -54,6 +57,13 @@ describe('routerListener', () => {
         $transition$.error = sinon.stub().returns('transitionError');
         $transitions.onError.yield($transition$);
         expect(ngUiStateChangeActions.onStateChangeError.calledWith('to', 'toParams', 'from', 'fromParams', 'options', 'transitionError')).to.equal(true);
+      });
+    });
+
+    describe('onFinish', () => {
+      it('must call onStateChangeFinish', () => {
+        $transitions.onFinish.yield($transition$);
+        expect(ngUiStateChangeActions.onStateChangeFinish.called).to.equal(true);
       });
     });
 
