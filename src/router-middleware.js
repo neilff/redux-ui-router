@@ -2,7 +2,7 @@ import {
   STATE_GO,
   STATE_RELOAD,
   STATE_TRANSITION_TO,
-  STATE_CHANGE_SUCCESS,
+  STATE_CHANGE_FINISH,
 } from './action-types';
 
 export default function routerMiddleware($state) {
@@ -20,11 +20,11 @@ export default function routerMiddleware($state) {
 
     case STATE_TRANSITION_TO:
       return $state.transitionTo(payload.to, payload.params, payload.options)
-      .then(next(action));
+          .then(next(action));
 
-    case STATE_CHANGE_SUCCESS:
+    case STATE_CHANGE_FINISH:
       return next({
-        type: STATE_CHANGE_SUCCESS,
+        type: STATE_CHANGE_FINISH,
         payload: {
           currentState: action.payload.toState,
           currentParams: action.payload.toParams,

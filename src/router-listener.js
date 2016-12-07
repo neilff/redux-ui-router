@@ -15,7 +15,8 @@ export default function RouterListener($transitions, ngUiStateChangeActions) {
 
   $transitions.onStart({}, $transition$ => ngUiStateChangeActions.onStateChangeStart(...prevNext($transition$)));
   $transitions.onError({}, $transition$ => ngUiStateChangeActions.onStateChangeError(...prevNext($transition$), $transition$.error()));
-  $transitions.onSuccess({}, $transition$ => ngUiStateChangeActions.onStateChangeSuccess(...prevNextReduxState($transition$)));
+  $transitions.onFinish({}, $transition$ => ngUiStateChangeActions.onStateChangeFinish(...prevNextReduxState($transition$)));
+  $transitions.onSuccess({}, $transition$ => ngUiStateChangeActions.onStateChangeSuccess(...prevNext($transition$)));
 }
 
 function getStateObject(state) {

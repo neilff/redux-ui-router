@@ -1,6 +1,6 @@
 {
   "name": "redux-ui-router",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Redux middleware for use with Angular UI Router",
   "main": "./lib/index.js",
   "scripts": {
@@ -15,13 +15,13 @@
     "url": "https://github.com/neilff/redux-ui-router"
   },
   "author": "Neil Fenton (neilff)",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "redux": "^3.5.2"
   },
   "devDependencies": {
     "angular": "^1.4.x < 2.0.0",
-    "angular-ui-router": "1.0.0-beta.1",
+    "angular-ui-router": "1.0.0-beta.3",
     "babel-cli": "^6.11.4",
     "babel-core": "6.13.1",
     "babel-eslint": "6.1.2",
