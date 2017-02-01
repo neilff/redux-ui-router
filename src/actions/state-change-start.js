@@ -1,4 +1,4 @@
-import { STATE_CHANGE_START } from './action-types';
+import { STATE_CHANGE_START } from '../constants/action-types'
 
 /**
  * This action is triggered when a $stateChangeStart event is broadcast.
@@ -13,7 +13,7 @@ import { STATE_CHANGE_START } from './action-types';
  * @param {Object} options Options object
  * @return {Object} Action object
  */
-export default function onStateChangeStart(toState, toParams, fromState, fromParams, options) {
+export default function onStateChangeStart (toState, toParams, fromState, fromParams, options) {
   return {
     type: STATE_CHANGE_START,
     payload: {
@@ -21,7 +21,7 @@ export default function onStateChangeStart(toState, toParams, fromState, fromPar
       toParams,
       fromState,
       fromParams,
-      options,
-    },
-  };
+      options
+    }
+  }
 }

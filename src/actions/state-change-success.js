@@ -1,4 +1,4 @@
-import { STATE_CHANGE_SUCCESS } from './action-types';
+import { STATE_CHANGE_SUCCESS } from '../constants/action-types'
 
 /**
  * This action is triggered when a $stateChangeSuccess event is broadcast.
@@ -12,14 +12,14 @@ import { STATE_CHANGE_SUCCESS } from './action-types';
  * @param {Object} fromParams From params object
  * @return {Object} Action object
  */
-export default function onStateChangeSuccess(toState, toParams, fromState, fromParams) {
+export default function onStateChangeSuccess (toState, toParams, fromState, fromParams) {
   return {
     type: STATE_CHANGE_SUCCESS,
     payload: {
       toState,
       toParams,
       fromState,
-      fromParams,
-    },
-  };
+      fromParams
+    }
+  }
 }

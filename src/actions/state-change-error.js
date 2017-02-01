@@ -1,4 +1,4 @@
-import { STATE_CHANGE_ERROR } from './action-types';
+import { STATE_CHANGE_ERROR } from '../constants/action-types'
 
 /**
  * This action is triggered when a $transitions.onError event is occours.
@@ -13,7 +13,7 @@ import { STATE_CHANGE_ERROR } from './action-types';
  * @param {Object} err Error resolve object
  * @return {Object} Action object
  */
-export default function onStateChangeError(toState, toParams, fromState, fromParams, err) {
+export default function onStateChangeError (toState, toParams, fromState, fromParams, err) {
   return {
     type: STATE_CHANGE_ERROR,
     payload: {
@@ -21,7 +21,7 @@ export default function onStateChangeError(toState, toParams, fromState, fromPar
       toParams,
       fromState,
       fromParams,
-      err,
-    },
-  };
+      err
+    }
+  }
 }

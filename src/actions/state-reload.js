@@ -1,4 +1,4 @@
-import { STATE_RELOAD } from './action-types';
+import { STATE_RELOAD } from '../constants/action-types'
 
 /**
  * This action create will trigger a $state.reload in the UiRouter Middleware.
@@ -9,9 +9,9 @@ import { STATE_RELOAD } from './action-types';
  * @param  {String} state - (optional) Root of the resolves to be re-resolved
  * @return {Object} Action object
  */
-export default function stateReload(state) {
+export default function stateReload (state) {
   return {
     type: STATE_RELOAD,
-    payload: state,
-  };
+    payload: state
+  }
 }

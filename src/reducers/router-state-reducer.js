@@ -1,11 +1,11 @@
-import { STATE_CHANGE_SUCCESS } from './action-types';
+import { STATE_CHANGE_SUCCESS } from '../constants/action-types'
 
 const INITIAL_STATE = {
   currentState: {},
   currentParams: {},
   prevState: {},
-  prevParams: {},
-};
+  prevParams: {}
+}
 
 /**
  * Reducer of STATE_CHANGE_SUCCESS actions. Returns a state object
@@ -15,9 +15,9 @@ const INITIAL_STATE = {
  * @param  {Object} action - Action
  * @return {Object} New state
  */
-export default function routerStateReducer(state = INITIAL_STATE, action) {
+export default function routerStateReducer (state = INITIAL_STATE, action) {
   if (action.type !== STATE_CHANGE_SUCCESS) {
-    return state;
+    return state
   }
-  return action.payload;
+  return action.payload
 }
