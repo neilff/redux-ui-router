@@ -26,8 +26,6 @@ bower_components
 jspm_packages
 .test
 www
-lib/
 dist
-lib
 coverage
 *.tgz
