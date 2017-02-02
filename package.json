@@ -39,7 +39,7 @@
     "eslint-config-airbnb-base": "^1.0.4",
     "eslint-plugin-import": "^1.6.1",
     "mocha": "2.5.3",
-    "ng-redux": "^3.3.3",
+    "ng-redux": "^3.4.0-beta.1",
     "node-libs-browser": "^1.0.0",
     "sinon": "1.17.4",
     "sinon-as-promised": "^3.0.1",

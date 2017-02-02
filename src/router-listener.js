@@ -1,4 +1,3 @@
-
 function _getStateObject (state) {
   if (!state) return {}
 
