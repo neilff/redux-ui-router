@@ -2,12 +2,8 @@ function _getStateObject (state) {
   if (!state) return {}
 
   const { name, params, url, data } = state
-  return {
-    name,
-    params,
-    url,
-    data
-  }
+
+  return { name, params, url, data }
 }
 
 /**
