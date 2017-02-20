@@ -16,14 +16,13 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.5.1",
-    "angular-ui-router": "0.3.1",
+    "angular-ui-router": "0.4.2",
     "ng-redux": "^3.3.3",
     "redux": "^3.5.2",
     "redux-logger": "2.6.1",
     "redux-thunk": "2.1.0"
   },
   "engines" : {
-    "node" : "6.3.0",
-    "npm" : "3.10.3"
+    "node" : ">=6.0.0"
   }
 }
