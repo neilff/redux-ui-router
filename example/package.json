@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.5.1",
-    "angular-ui-router": "1.0.0-beta.3",
+    "angular-ui-router": "^1.0.0-rc.1",
     "ng-redux": "^3.3.3",
     "react-redux": "^4.4.5",
     "redux-devtools": "^3.3.1",
@@ -30,7 +30,6 @@
     "redux-thunk": "2.1.0"
   },
   "engines" : {
-    "node" : "6.3.0",
-    "npm" : "3.10.3"
+    "node" : ">=6.0.0"
   }
 }
