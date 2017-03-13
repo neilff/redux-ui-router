@@ -1,7 +1,5 @@
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
-// reducers
-import routerState from './reducers/router-state-reducer'
 // actions
 import stateGo from './actions/state-go'
 import stateReload from './actions/state-reload'
@@ -20,7 +18,8 @@ export default angular
   .run(uiRouterListener)
   .name
 
-export const router = routerState
+export { router } from './reducers/router-state-reducer'
+export { routerStateReducerFactory } from './reducers/router-state-reducer'
 
 export {
   stateGo,
