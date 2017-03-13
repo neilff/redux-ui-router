@@ -12,14 +12,15 @@ import { STATE_CHANGE_SUCCESS } from '../constants/action-types'
  * @param {Object} fromParams From params object
  * @return {Object} Action object
  */
-export default function onStateChangeSuccess (toState, toParams, fromState, fromParams) {
+export default function onStateChangeSuccess (toState, toParams, fromState, fromParams, data) {
   return {
     type: STATE_CHANGE_SUCCESS,
     payload: {
       toState,
       toParams,
       fromState,
-      fromParams
+      fromParams,
+      data
     }
   }
 }

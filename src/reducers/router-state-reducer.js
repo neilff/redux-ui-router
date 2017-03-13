@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   currentState: {},
   currentParams: {},
   prevState: {},
-  prevParams: {}
+  prevParams: {},
+  data: {}
 }
 
 /**
