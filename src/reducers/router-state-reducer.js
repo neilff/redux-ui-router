@@ -1,11 +1,12 @@
 import { STATE_CHANGE_SUCCESS } from '../constants/action-types'
 
 const INITIAL_STATE = {
-  currentState: {},
+  currentState: {
+  	data: {}
+  },
   currentParams: {},
   prevState: {},
-  prevParams: {},
-  data: {}
+  prevParams: {}
 }
 
 /**
