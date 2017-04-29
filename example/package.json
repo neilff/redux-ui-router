@@ -21,7 +21,11 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.5.1",
+<<<<<<< HEAD
     "angular-ui-router": "^1.0.0-rc.1",
+=======
+    "angular-ui-router": "0.4.2",
+>>>>>>> master
     "ng-redux": "^3.3.3",
     "react-redux": "^4.4.5",
     "redux-devtools": "^3.3.1",
