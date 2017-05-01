@@ -9,8 +9,8 @@
     "test": "npm run lint; NODE_ENV=test node node_modules/.bin/mocha --compilers js:babel-register --recursive --require src/__tests__/index.js src/**/*.test.js",
     "test:live": "npm run lint; NODE_ENV=test node node_modules/.bin/mocha --compilers js:babel-register --recursive --require src/__tests__/index.js -w src/**/*.test.js",
     "build": "npm run clean; npm run test; node node_modules/.bin/babel src --out-dir lib",
-    "bundle:dev": "webpack --output-library=ngReduxUiRouter --output-library-target=umd lib/index.js dist/redux-ui-router.js",
-    "bundle:prod": "webpack -p --output-library=ngReduxUiRouter --output-library-target=umd lib/index.js dist/redux-ui-router.min.js",
+    "bundle:dev": "webpack lib/index.js dist/redux-ui-router.js",
+    "bundle:prod": "webpack -p lib/index.js dist/redux-ui-router.min.js",
     "prepublish": "npm run build && npm run bundle:dev && npm run bundle:prod"
   },
   "repository": {
