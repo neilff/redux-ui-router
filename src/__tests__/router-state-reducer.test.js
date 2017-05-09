@@ -1,5 +1,5 @@
 import 'chai';
-import routerStateReducer from '../router-state-reducer';
+import routerStateReducer from '../reducers/router-state-reducer';
 
 describe('routerStateReducer', () => {
   it('should return the initial state', () => {

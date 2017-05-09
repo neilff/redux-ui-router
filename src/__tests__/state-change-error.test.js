@@ -1,5 +1,5 @@
 import 'chai';
-import stateChangeError from '../state-change-error';
+import stateChangeError from '../actions/state-change-error';
 
 describe('stateChangeError', () => {
   it('should create an action with the provided params', () => {

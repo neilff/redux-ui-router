@@ -1,5 +1,5 @@
 import 'chai';
-import stateReload from '../state-reload';
+import stateReload from '../actions/state-reload';
 
 describe('stateReload', () => {
   it('should create an action containing the state to reload', () => {
