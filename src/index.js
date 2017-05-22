@@ -1,5 +1,5 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
+import uiRouter from '@uirouter/angularjs';
 import routerState from './router-state-reducer';
 import stateGo from './state-go';
 import stateReload from './state-reload';
