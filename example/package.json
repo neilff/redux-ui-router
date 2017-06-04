@@ -7,22 +7,29 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "babel-core": "6.13.1",
     "babel-loader": "6.2.4",
-    "babel-core": "6.5.2",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
     "redux-batched-updates": "0.1.0",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.0.11",
+    "redux-slider-monitor": "^1.0.7",
     "webpack": "1.13.1",
     "webpack-dev-server": "1.14.1"
   },
   "license": "MIT",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.3",
     "angular": "^1.5.1",
-    "angular-ui-router": "0.4.2",
     "ng-redux": "^3.3.3",
+    "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "redux-devtools": "^3.3.1",
     "redux-logger": "2.6.1",
     "redux-thunk": "2.1.0"
   },
-  "engines" : {
-    "node" : ">=6.0.0"
+  "engines": {
+    "node": ">=6.0.0"
   }
 }

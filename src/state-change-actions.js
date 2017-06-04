@@ -1,8 +1,8 @@
 // Event Actions
 import onStateChangeStart from './state-change-start';
 import onStateChangeSuccess from './state-change-success';
+import onStateChangeFinish from './state-change-finish';
 import onStateChangeError from './state-change-error';
-import onStateNotFound from './state-not-found';
 
 import { bindActionCreators } from 'redux';
 
@@ -11,8 +11,8 @@ export default function stateChangeActions() {
     const actionCreator = {
       onStateChangeStart,
       onStateChangeSuccess,
+      onStateChangeFinish,
       onStateChangeError,
-      onStateNotFound,
     };
 
     return bindActionCreators(actionCreator, $ngRedux.dispatch);

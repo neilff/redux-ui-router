@@ -1,33 +1,24 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
+import uiRouter from '@uirouter/angularjs';
 
 import ngRedux from 'ng-redux';
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
+import { default as DevTools, runDevTools } from './devTools';
 
 import ngReduxRouter from '../src';
 
-import {
-  router,
-  stateGo,
-  stateReload,
-  stateTransitionTo
-}
-from '../src';
+import { router, stateGo, stateReload, stateTransitionTo } from '../src';
 
 const routerActions = {
   stateGo,
   stateReload,
-  stateTransitionTo
+  stateTransitionTo,
 };
 
 export default angular
-  .module('demoApp', [
-    uiRouter,
-    ngRedux,
-    ngReduxRouter
-  ])
+  .module('demoApp', [uiRouter, ngRedux, ngReduxRouter])
   .config(($urlRouterProvider, $stateProvider) => {
     $urlRouterProvider.otherwise('/app');
 
@@ -60,21 +51,24 @@ export default angular
 
               $ngRedux.connect(state => {
                 return {
-                  globalState: state
+                  globalState: state,
                 };
-              })($scope)
-            }
-          }
-        }
+              })($scope);
+            },
+          },
+        },
       })
       .state('app.child1', {
         url: '/child1?hello?optional',
         views: {
           child: {
             controller: ($scope, $ngRedux) => {
-              let disconnect = $ngRedux.connect((state) => state, routerActions)($scope);
+              const disconnect = $ngRedux.connect(
+                state => state,
+                routerActions
+              )($scope);
 
-              $scope.$on('$destroy', disconnect)
+              $scope.$on('$destroy', disconnect);
             },
             template: `
               <div class="child-view">
@@ -83,18 +77,21 @@ export default angular
                 <button ng-click="stateTransitionTo('app.child2')">stateTransitionTo View 2</button>
                 <button ng-click="stateTransitionTo('app.child3', {id: '4'})">stateTransitionTo View 3, ID: 4</button>
               </div>
-            `
-          }
-        }
+            `,
+          },
+        },
       })
       .state('app.child2', {
         url: '/child2',
         views: {
           child: {
             controller: ($scope, $ngRedux) => {
-              let disconnect = $ngRedux.connect((state) => state, routerActions)($scope);
+              const disconnect = $ngRedux.connect(
+                state => state,
+                routerActions
+              )($scope);
 
-              $scope.$on('$destroy', disconnect)
+              $scope.$on('$destroy', disconnect);
             },
             template: `
               <div class="child-view">
@@ -103,22 +100,25 @@ export default angular
                 <button ng-click="stateReload('app.child1')">$state.reload</button>
                 <button ng-click="stateGo('app.child1',{hello: 'world', optional: true})">$state.go to View 1 with Params</button>
               </div>
-            `
-          }
-        }
+            `,
+          },
+        },
       })
       .state('app.child3', {
         url: '/child3?id',
         params: {
-          hello: 'world'
+          hello: 'world',
         },
         reloadOnSearch: false,
         views: {
           child: {
             controller: ($scope, $ngRedux) => {
-              let disconnect = $ngRedux.connect((state) => state, routerActions)($scope);
+              const disconnect = $ngRedux.connect(
+                state => state,
+                routerActions
+              )($scope);
 
-              $scope.$on('$destroy', disconnect)
+              $scope.$on('$destroy', disconnect);
             },
             template: `
               <div class="child-view">
@@ -128,9 +128,9 @@ export default angular
                 <button ng-click="stateGo('app.child3', {id: '2'})">$state.go View 3, ID: 2</button>
                 <button ng-click="stateGo('app.child3', {id: '3'})">$state.go View 3, ID: 3</button>
               </div>
-            `
-          }
-        }
+            `,
+          },
+        },
       })
       .state('app.child4', {
         url: '/child4',
@@ -142,42 +142,41 @@ export default angular
               <h2>Child View 4</h2>
               <div>This state is prohibited. You should've been redirected to the root.</div>
             </div>
-          `
-          }
-        }
-      })
+          `,
+          },
+        },
+      });
   })
-  .config(($ngReduxProvider) => {
+  .config($ngReduxProvider => {
     const logger = createLogger({
       level: 'info',
-      collapsed: true
+      collapsed: true,
     });
 
     const reducers = combineReducers({
-      router
+      router,
     });
 
-    $ngReduxProvider.createStoreWith(reducers, ['ngUiRouterMiddleware', logger, thunk]);
-  })
-  .run(($rootScope, $state, $ngRedux, $urlRouter) => {
+    const middlewares = ['ngUiRouterMiddleware', thunk, logger];
+    const enhancers = [DevTools.instrument()];
 
+    $ngReduxProvider.createStoreWith(reducers, middlewares, enhancers);
+  })
+  .run(runDevTools)
+  .run(($transitions, $state, $ngRedux) => {
     // If save something to the store, dispatch will force state change update
     console.log('will do dispatch');
-    $ngRedux.dispatch({type: 'SOME_ACTION'});
+    $ngRedux.dispatch({ type: 'SOME_ACTION' });
     console.log('did dispatch');
 
-    $rootScope.$on('$stateChangeStart', function(evt, to, params) {
-      if (to.prohibited) {
-        evt.preventDefault();
+    const matchCriteria = { to: state => state.prohibited };
+
+    $transitions.onBefore(matchCriteria, $transition$ => {
+      if ($transition$.to().prohibited) {
         console.log('prohibited state change cancelled');
-        $state.go('app');
+        return $state.target('app', { location: 'replace' });
       }
     });
 
-    console.log('$stateChangeStart callback is ready');
-    console.log('enable $urlRouter listening');
-
-    $urlRouter.sync();
-    $urlRouter.listen();
-  })
-  .name;
+    console.log('$transitions.onBefore callback is ready');
+  }).name;

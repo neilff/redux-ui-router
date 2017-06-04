@@ -1,4 +1,4 @@
-import { STATE_CHANGE_SUCCESS } from './action-types';
+import { STATE_CHANGE_FINISH } from './action-types';
 
 const INITIAL_STATE = {
   currentState: {},
@@ -16,9 +16,8 @@ const INITIAL_STATE = {
  * @return {Object} New state
  */
 export default function routerStateReducer(state = INITIAL_STATE, action) {
-  if (action.type !== STATE_CHANGE_SUCCESS) {
+  if (action.type !== STATE_CHANGE_FINISH) {
     return state;
   }
-  delete action.payload.evt;
   return action.payload;
 }

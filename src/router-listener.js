@@ -1,31 +1,37 @@
 /**
  * Listens for events emitted from Angular UI Router and fires redux events
  *
- * @param {object} $rootScope Dependency
- * @param {object} $urlRouter Dependency
- * @param {object} $stateParams Dependency
+ * @param {object} $transitions Dependency
  * @param {object} ngUiStateChangeActions Dependency
  * @return {undefined} undefined
  */
-export default function RouterListener($rootScope, $urlRouter, $stateParams, ngUiStateChangeActions) {
-  $rootScope.$on('$stateChangeStart', ngUiStateChangeActions.onStateChangeStart);
+export default function RouterListener($transitions, ngUiStateChangeActions) {
+  const prevNext = t => [t.to(), t.params('to'), t.from(), t.params('from'), t.options()];
 
-  $rootScope.$on('$stateChangeSuccess', () => {
-    ngUiStateChangeActions.onStateChangeSuccess();
-  });
+  const prevNextReduxState = t => ([getStateObject(t.to()),
+                                            t.params('to'),
+                                            getStateObject(t.from()),
+                                            t.params('from')]);
 
-  const unsubcribeStateChangeListener = $rootScope.$on('$locationChangeSuccess', () => {
-    ngUiStateChangeActions.onStateChangeSuccess();
-    unsubcribeStateChangeListener();
-  });
+  $transitions.onStart({}, $transition$ => ngUiStateChangeActions.onStateChangeStart(...prevNext($transition$)));
+  $transitions.onError({}, $transition$ => ngUiStateChangeActions.onStateChangeError(...prevNext($transition$), $transition$.error()));
+  $transitions.onFinish({}, $transition$ => ngUiStateChangeActions.onStateChangeFinish(...prevNextReduxState($transition$)));
+  $transitions.onSuccess({}, $transition$ => ngUiStateChangeActions.onStateChangeSuccess(...prevNext($transition$)));
+}
 
-  $rootScope.$on('$stateChangeError', ngUiStateChangeActions.onStateChangeError);
-  $rootScope.$on('$stateNotFound', ngUiStateChangeActions.onStateNotFound);
+function getStateObject(state) {
+  if (!state) {
+    return {};
+  }
+  const { name, params, url } = state;
+  return {
+    name,
+    params,
+    url,
+  };
 }
 
 RouterListener.$inject = [
-  '$rootScope',
-  '$urlRouter',
-  '$stateParams',
+  '$transitions',
   'ngUiStateChangeActions',
 ];

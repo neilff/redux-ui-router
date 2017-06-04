@@ -9,7 +9,7 @@ export const STATE_RELOAD = '@@reduxUiRouter/stateReload';
 export const STATE_TRANSITION_TO = '@@reduxUiRouter/transitionTo';
 
 // UI Router Events
-export const STATE_CHANGE_START = '@@reduxUiRouter/$stateChangeStart';
-export const STATE_CHANGE_SUCCESS = '@@reduxUiRouter/$stateChangeSuccess';
-export const STATE_CHANGE_ERROR = '@@reduxUiRouter/$stateChangeError';
-export const STATE_NOT_FOUND = '@@reduxUiRouter/$stateNotFound';
+export const STATE_CHANGE_START = '@@reduxUiRouter/onStart';
+export const STATE_CHANGE_SUCCESS = '@@reduxUiRouter/onSuccess';
+export const STATE_CHANGE_FINISH = '@@reduxUiRouter/onFinish';
+export const STATE_CHANGE_ERROR = '@@reduxUiRouter/onError';
