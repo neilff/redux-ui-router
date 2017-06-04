@@ -23,8 +23,8 @@
     "redux": "^3.5.2"
   },
   "devDependencies": {
+    "@uirouter/angularjs": "^1.0.3",
     "angular": "^1.4.x < 2.0.0",
-    "angular-ui-router": "^1.0.0-rc.1",
     "babel-cli": "^6.11.4",
     "babel-core": "6.13.1",
     "babel-eslint": "6.1.2",
@@ -43,8 +43,8 @@
     "webpack": "^2.4.1"
   },
   "peerDependencies": {
-    "angular": "^1.4.x < 2.0.0",
-    "angular-ui-router": "^1.0.0-rc.1"
+    "@uirouter/angularjs": "^1.0.3",
+    "angular": "^1.4.x < 2.0.0"
   },
   "engines": {
     "node": ">=6.0.0"
