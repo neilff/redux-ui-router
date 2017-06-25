@@ -3,5 +3,5 @@ module.exports = {
     library: 'ngReduxUiRouter',
     libraryTarget: 'umd'
   },
-  externals: ['angular', 'angular-ui-router']
+  externals: ['angular', '@uirouter/angularjs']
 };
