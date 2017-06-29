@@ -1,6 +1,4 @@
-#redux-ui-router
-
-[![Circle CI](https://circleci.com/gh/neilff/ng-redux-ui-router.svg?style=svg)](https://circleci.com/gh/neilff/ng-redux-ui-router)
+# redux-ui-router
 
 > ngRedux bindings for Angular UI Router - Keep your router state inside your ngRedux store.
 
