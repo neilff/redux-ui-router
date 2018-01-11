@@ -8,13 +8,13 @@ import stateTransitionTo from './actions/state-transition-to'
 import routerMiddleware from './middleware/router-middleware'
 import uiRouterListener from './router-listener'
 import stateChangeActions from './state-change-actions'
+import stateActivationActions from './state-activation-actions'
 
 export default angular
-  .module('ng-ui-router-middleware', [
-    uiRouter
-  ])
+  .module('ng-ui-router-middleware', [uiRouter])
   .provider('ngUiStateChangeActions', stateChangeActions)
   .factory('ngUiRouterMiddleware', routerMiddleware)
+  .factory('ngUiStateActivationActions', stateActivationActions)
   .run(uiRouterListener)
   .name
 

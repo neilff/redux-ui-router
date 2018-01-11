@@ -1,8 +1,8 @@
-import { STATE_CHANGE_START } from '../constants/action-types'
+import { STATE_CHANGE_FINISH } from '../constants/action-types';
 
 /**
- * This action is triggered when a $stateChangeStart event is broadcast.
- * Accepts a payload which matches the UI Router $stateChangeStart event.
+ * This action is triggered when a $stateChangeFinish event is broadcast.
+ * Accepts a payload which matches the UI Router $stateChangeFinish event.
  *
  * http://angular-ui.github.io/ui-router/site/#/api/ui.router.state.$state
  *
@@ -13,9 +13,9 @@ import { STATE_CHANGE_START } from '../constants/action-types'
  * @param {Object} options Options object
  * @return {Object} Action object
  */
-export default function onStateChangeStart (toState, toParams, fromState, fromParams, options) {
+export default function onStateChangeFinish(toState, toParams, fromState, fromParams, options) {
   return {
-    type: STATE_CHANGE_START,
+    type: STATE_CHANGE_FINISH,
     payload: {
       toState,
       toParams,
@@ -23,5 +23,5 @@ export default function onStateChangeStart (toState, toParams, fromState, fromPa
       fromParams,
       options,
     },
-  }
+  };
 }

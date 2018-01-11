@@ -14,6 +14,13 @@ function _getStateObject (state) {
  * @return {undefined} undefined
  */
 export default function RouterListener ($transitions, ngUiStateChangeActions) {
+  const prevNext = t => [
+    t.to(),
+    t.params('to'),
+    t.from(),
+    t.params('from'),
+    t.options()
+  ]
   const prevNextReduxState = t => ([
     _getStateObject(t.to()),
     t.params('to'),
@@ -23,18 +30,23 @@ export default function RouterListener ($transitions, ngUiStateChangeActions) {
 
   $transitions.onStart({}, $transition$ => {
     return ngUiStateChangeActions
-      .onStateChangeStart(...prevNextReduxState($transition$))
+      .onStateChangeStart(...prevNext($transition$))
   })
 
 
   $transitions.onError({}, $transition$ => {
     return ngUiStateChangeActions
-      .onStateChangeError(...prevNextReduxState($transition$), $transition$.error())
+      .onStateChangeError(...prevNext($transition$), $transition$.error())
+  })
+
+  $transitions.onFinish({}, $transition$ => {
+    return ngUiStateChangeActions
+      .onStateChangeFinish(...prevNextReduxState($transition$))
   })
 
   $transitions.onSuccess({}, $transition$ => {
     return ngUiStateChangeActions
-      .onStateChangeSuccess(...prevNextReduxState($transition$))
+      .onStateChangeSuccess(...prevNext($transition$))
   })
 }
 

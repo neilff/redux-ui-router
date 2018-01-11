@@ -1,35 +1,35 @@
 {
   "name": "redux-ui-router",
-  "version": "0.6.1",
+  "version": "0.7.1",
   "description": "Redux middleware for use with Angular UI Router",
   "main": "./lib/index.js",
   "scripts": {
     "lint": "node node_modules/.bin/eslint src",
-    "clean": "rm -rf lib",
+    "clean": "rm -rf lib && rm -rf dist",
     "test": "npm run lint; NODE_ENV=test node node_modules/.bin/mocha --compilers js:babel-register --recursive --require src/__tests__/index.js src/**/*.test.js",
     "test:live": "npm run lint; NODE_ENV=test node node_modules/.bin/mocha --compilers js:babel-register --recursive --require src/__tests__/index.js -w src/**/*.test.js",
     "build": "npm run clean; npm run test; node node_modules/.bin/babel src --out-dir lib",
-    "dev": "node_modules/.bin/webpack --config webpack.config.js",
-    "prod": "node_modules/.bin/webpack --config webpack.prod.config.js"
+    "bundle:dev": "webpack lib/index.js dist/redux-ui-router.js",
+    "bundle:prod": "webpack -p lib/index.js dist/redux-ui-router.min.js",
+    "prepublish": "npm run build && npm run bundle:dev && npm run bundle:prod"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/neilff/redux-ui-router"
   },
   "author": "Neil Fenton (neilff)",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.4",
     "redux": "^3.5.2"
   },
   "devDependencies": {
-    "angular": "^1.4.x < 2.0.0",
     "@uirouter/angularjs": "^1.0.3",
+    "angular": "^1.4.x < 2.0.0",
     "babel-cli": "^6.11.4",
     "babel-core": "6.13.1",
-    "babel-eslint": "^6.1.2",
+    "babel-eslint": "6.1.2",
     "babel-loader": "6.2.4",
-    "babel-plugin-transform-runtime": "^6.22.0",
     "babel-preset-es2015": "^6.13.1",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
@@ -44,11 +44,11 @@
     "node-libs-browser": "^1.0.0",
     "sinon": "1.17.4",
     "sinon-as-promised": "^3.0.1",
-    "webpack": "^2.2.1"
+    "webpack": "^2.4.1"
   },
   "peerDependencies": {
-    "angular": "^1.4.x < 2.0.0",
-    "@uirouter/angularjs": "^1.0.3"
+    "@uirouter/angularjs": "^1.0.3",
+    "angular": "^1.4.x < 2.0.0"
   },
   "engines": {
     "node": ">=6.0.0"

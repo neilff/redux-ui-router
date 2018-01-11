@@ -1,5 +1,5 @@
 import 'chai';
-import routerStateReducer from '../reducers/router-state-reducer';
+import { router as routerStateReducer } from '../reducers/router-state-reducer';
 
 describe('routerStateReducer', () => {
   it('should return the initial state', () => {
@@ -9,15 +9,15 @@ describe('routerStateReducer', () => {
     };
 
     let state = routerStateReducer(undefined, action);
-    expect(state.currentState).to.deep.equal({});
+    expect(state.currentState).to.deep.equal({ data: {} });
     expect(state.currentParams).to.deep.equal({});
     expect(state.prevState).to.deep.equal({});
     expect(state.prevParams).to.deep.equal({});
   });
 
-  it('should set the provided state if the $stateChangeSuccess type is used', () => {
+  it('should set the provided state if the $stateChangeFinish type is used', () => {
     let action = {
-      type: '@@reduxUiRouter/onSuccess',
+      type: '@@reduxUiRouter/onFinish',
       payload: {
         currentState: 'currentState',
         currentParams: 'currentParams',
