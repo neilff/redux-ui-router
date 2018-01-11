@@ -1,10 +1,5 @@
 import angular from 'angular'
 import uiRouter from '@uirouter/angularjs'
-// actions
-import stateGo from './actions/state-go'
-import stateReload from './actions/state-reload'
-import stateTransitionTo from './actions/state-transition-to'
-
 import routerMiddleware from './middleware/router-middleware'
 import uiRouterListener from './router-listener'
 import stateChangeActions from './state-change-actions'
@@ -20,9 +15,7 @@ export default angular
 
 export { router } from './reducers/router-state-reducer'
 export { routerStateReducerFactory } from './reducers/router-state-reducer'
-
-export {
-  stateGo,
-  stateReload,
-  stateTransitionTo
-}
+export { stateGo } from './actions/state-go'
+export { stateReload } from './actions/state-reload'
+export { stateTransitionTo } from './actions/state-transition-to'
+export { * as routerActions } from './constants/action-types'
