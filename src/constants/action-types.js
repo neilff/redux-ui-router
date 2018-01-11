@@ -13,3 +13,15 @@ export const STATE_CHANGE_START = '@@reduxUiRouter/onStart'
 export const STATE_CHANGE_SUCCESS = '@@reduxUiRouter/onSuccess'
 export const STATE_CHANGE_FINISH = '@@reduxUiRouter/onFinish'
 export const STATE_CHANGE_ERROR = '@@reduxUiRouter/onError'
+
+const actions = {
+  STATE_GO,
+  STATE_RELOAD,
+  STATE_TRANSITION_TO,
+  STATE_CHANGE_START,
+  STATE_CHANGE_SUCCESS,
+  STATE_CHANGE_FINISH,
+  STATE_CHANGE_ERROR
+}
+
+export { actions }
