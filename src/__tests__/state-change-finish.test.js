@@ -1,5 +1,5 @@
 import 'chai';
-import stateChangeFinish from '../state-change-finish';
+import stateChangeFinish from '../actions/state-change-finish';
 
 describe('stateChangeFinish', () => {
   it('should create an action with the provided params', () => {

@@ -1,13 +1,13 @@
 import 'chai';
 import sinon from 'sinon';
 import 'sinon-as-promised';
-import routerMiddleware from '../router-middleware';
+import routerMiddleware from '../middleware/router-middleware';
 
 import {
   STATE_GO,
   STATE_RELOAD,
   STATE_TRANSITION_TO
-} from '../action-types';
+} from '../constants/action-types';
 
 let $state;
 let nextSpy;

@@ -141,6 +141,7 @@ To run the example:
 
 ```
 git clone https://github.com/neilff/redux-ui-router/
+cd redux-ui-router
 npm install
 cd example
 npm install

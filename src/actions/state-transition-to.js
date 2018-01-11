@@ -1,4 +1,4 @@
-import { STATE_TRANSITION_TO } from './action-types';
+import { STATE_TRANSITION_TO } from '../constants/action-types'
 
 /**
  * This action create will trigger a $state.transitionTo in the UiRouter Middleware.
@@ -11,13 +11,13 @@ import { STATE_TRANSITION_TO } from './action-types';
  * @param  {Object} options - (optional) Options object
  * @return {Object} Action object
  */
-export default function stateTransitionTo(to, params, options) {
+export default function stateTransitionTo (to, params, options) {
   return {
     type: STATE_TRANSITION_TO,
     payload: {
       to,
       params,
-      options,
-    },
-  };
+      options
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import 'chai';
-import stateTransitionTo from '../state-transition-to';
+import stateTransitionTo from '../actions/state-transition-to';
 
 describe('stateTransitionTo', () => {
   it('should create an action containing the state to transition to', () => {

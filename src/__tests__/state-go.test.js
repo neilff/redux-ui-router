@@ -1,5 +1,5 @@
 import 'chai';
-import stateGo from '../state-go';
+import stateGo from '../actions/state-go';
 
 describe('stateGo', () => {
   it('should create an action containing the state to go to', () => {

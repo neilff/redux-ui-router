@@ -1,4 +1,4 @@
-import { STATE_GO } from './action-types';
+import { STATE_GO } from '../constants/action-types'
 
 /**
  * This action create will trigger a $state.go in the UiRouter Middleware.
@@ -11,13 +11,13 @@ import { STATE_GO } from './action-types';
  * @param  {Object} options - (optional) Options object
  * @return {Object} Action object
  */
-export default function stateGo(to, params, options) {
+export default function stateGo (to, params, options) {
   return {
     type: STATE_GO,
     payload: {
       to,
       params,
-      options,
-    },
-  };
+      options
+    }
+  }
 }

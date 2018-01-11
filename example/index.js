@@ -5,7 +5,11 @@ import ngRedux from 'ng-redux';
 import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
+<<<<<<< HEAD
+import { default as DevTools, runDevTools} from './devTools';
+=======
 import { default as DevTools, runDevTools } from './devTools';
+>>>>>>> upstream/master
 
 import ngReduxRouter from '../src';
 
@@ -159,6 +163,14 @@ export default angular
 
     const middlewares = ['ngUiRouterMiddleware', thunk, logger];
     const enhancers = [DevTools.instrument()];
+<<<<<<< HEAD
+
+    $ngReduxProvider.createStoreWith(reducers, middlewares, enhancers);
+  })
+  .run(runDevTools)
+  .run(($transitions, $state, $ngRedux) => {
+=======
+>>>>>>> upstream/master
 
     $ngReduxProvider.createStoreWith(reducers, middlewares, enhancers);
   })
@@ -169,14 +181,28 @@ export default angular
     $ngRedux.dispatch({ type: 'SOME_ACTION' });
     console.log('did dispatch');
 
+<<<<<<< HEAD
+    let matchCriteria = { to: (state) => state.prohibited };
+
+    $transitions.onBefore(matchCriteria, ($transition$) => {
+      if ($transition$.to().prohibited) {
+        console.log('prohibited state change cancelled');
+        return $state.target('app', {location: 'replace'});
+=======
     const matchCriteria = { to: state => state.prohibited };
 
     $transitions.onBefore(matchCriteria, $transition$ => {
       if ($transition$.to().prohibited) {
         console.log('prohibited state change cancelled');
         return $state.target('app', { location: 'replace' });
+>>>>>>> upstream/master
       }
     });
 
     console.log('$transitions.onBefore callback is ready');
+<<<<<<< HEAD
+  })
+  .name;
+=======
   }).name;
+>>>>>>> upstream/master

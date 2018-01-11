@@ -1,5 +1,5 @@
 import 'chai';
-import stateChangeStart from '../state-change-start';
+import stateChangeStart from '../actions/state-change-start';
 
 describe('stateChangeStart', () => {
   it('should create an action with the provided params', () => {

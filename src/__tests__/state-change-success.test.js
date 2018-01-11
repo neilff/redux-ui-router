@@ -1,5 +1,5 @@
 import 'chai';
-import stateChangeSuccess from '../state-change-success';
+import stateChangeSuccess from '../actions/state-change-success';
 
 describe('stateChangeSuccess', () => {
   it('should create an action with the provided params', () => {
