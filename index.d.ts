@@ -7,13 +7,22 @@ export interface ReduxUIRouterAction {
 }
 
 /**
+ * The type of a redux-ui-router route
+ */
+export interface ReduxUIRoute {
+	name: string;
+	params: any;
+	url: string;
+}
+
+/**
 * The shape of the state tree used to manage the state of redux-ui-router
 */
 export interface ReduxUIRouterState {
-	currentState: Object;
-	currentParams: Object;
-	prevState: Object;
-	prevParams: Object;
+	currentState: ReduxUIRoute;
+	currentParams: any;
+	prevState: ReduxUIRoute;
+	prevParams: any;
 }
 
 /**
@@ -39,7 +48,7 @@ export var ngReduxUiRouter: string;
 * @param  {Object} options - (optional) Options object
 * @return {Object} Action object
 */
-export function stateGo(to: string, params?: Object, options?: Object): ReduxUIRouterAction;
+export function stateGo(to: string, params?: any, options?: any): ReduxUIRouterAction;
 
 /**
 * This action create will trigger a $state.reload in the UiRouter Middleware.
@@ -63,7 +72,7 @@ export function stateReload(state: any): ReduxUIRouterAction;
 * @param  {Object} options - (optional) Options object
 * @return {Object} Action object
 */
-export function stateTransitionTo(to: string, params?: Object, options?: Object): ReduxUIRouterAction;
+export function stateTransitionTo(to: string, params?: any, options?: any): ReduxUIRouterAction;
 
 /**
 * The default export is the name of the provided angular module
