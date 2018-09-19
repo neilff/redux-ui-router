@@ -19,4 +19,4 @@ export default angular
 
 export const router = routerState;
 
-export { stateGo, stateReload, stateTransitionTo };
+export { stateGo, stateReload, stateTransitionTo, routerMiddleware };
